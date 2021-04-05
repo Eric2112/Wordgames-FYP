@@ -1,7 +1,6 @@
 from django.urls import path
 from bullsAndCows import views
 from bullsAndCows.models import LogMessage
-from bullsAndCows.models import Guess
 
 from django.views.generic import TemplateView
 
@@ -14,7 +13,6 @@ from django.views.generic import TemplateView
 urlpatterns = [
     #path("", home_list_view, name="home"),
     path("", views.guess, name ="home"),
-    path("bullsAndCows/<name>", views.hello_there, name="hello_there"),
     path("input/", views.input, name="input"),
     path("guess/", views.guess, name="guess"),
     path("guess/<newform>", views.guess),

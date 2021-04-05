@@ -11,16 +11,7 @@ class LogMessage(models.Model):
         return f"'{self.message}' logged on {date.strftime('%A, %d %B, %Y at %X')}"
 
 # Create your models here.
-class Guess(models.Model):
-    guess = models.CharField(max_length = 40)
 
-#class Guess(models.Model):
-   # guess = models.CharField(default = 'guess', max_length = 4)
-
-class product(models.Model):
-    title = models.TextField()
-    description = models.TextField()
-    summary = models.TextField(default = 'this is great')
 
 
 

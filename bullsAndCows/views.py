@@ -15,25 +15,37 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
 from bullsAndCows.forms import GuessForm
-from bullsAndCows.models import Guess
+from django.urls import reverse
 
-def get_guess(request):
-    newform = GuessForm
-    if request.method == 'POST':
+def get_Guess(request):
+     if request.method == "POST":
+        form = GuessForm(request.POST)
+        if form.is_valid():
+            # Do something with the form data like send an email.
+            return HttpResponseRedirect('/thanks/')
+     else:
+        form = GuessForm()
 
-        newform = GuessForm(request.POST)
+     return render(request, 'bullsAndCows/guess.html', {'form': form})
+
+
+#def get_guess(request):
+ #   newform = GuessForm
+  #  if request.method == 'POST':
+
+   #     newform = GuessForm(request.POST)
         # check whether it's valid:
-        if newform.is_valid():
+    #    if newform.is_valid():
             # process the data in form.cleaned_data as required
             
-           print(newform.cleaned_data)
-           Guess.objects.create(**newform.cleaned_data)
-        else: 
-            print(newform.errors)
-    context ={
-        "form" : newform
-    } 
-    return render(request, 'bullsAndCows/guess.html', context)
+     #      print(newform.cleaned_data)
+      #     Guess.objects.create(**newform.cleaned_data)
+       # else: 
+        #    print(newform.errors)
+    #context ={
+     #   "form" : newform
+    #} 
+  #  return render(request, 'bullsAndCows/guess.html', context)
    
 
 
