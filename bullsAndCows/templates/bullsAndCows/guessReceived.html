@@ -1,0 +1,31 @@
+{% extends "bullsAndCows/layout.html" %} {% block title %} Guess Received {% endblock %} {% block content %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>guess input </title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bullsAndCows/site.css' %}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        function call_counter(url, pk) {
+            window.open(url);
+            $.get('input/' + pk + '/', function(data) {
+                alert("counter updated!");
+            });
+        }
+    </script>
+</head>
+
+
+<body>
+    <span class="message">your guess: {{newform}} is correct</span>
+    <button onclick="call_counter('guess.html');">
+        Return
+    </button>
+</body>
+
+</html>
+
+{% endblock %}
