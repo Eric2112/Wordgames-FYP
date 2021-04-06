@@ -1,1 +1,1 @@
-web: gunicorn wordgames.wsgipi
+web : gunicorn wordgames.wsgipi --logfile
