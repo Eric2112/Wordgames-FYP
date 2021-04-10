@@ -20,6 +20,7 @@ from django.urls import reverse
 def get_Guess(request):
      if request.method == "POST":
         form = GuessForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             # Do something with the form data like send an email.
             return HttpResponseRedirect('/thanks/')
