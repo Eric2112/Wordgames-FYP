@@ -18,12 +18,12 @@ from bullsAndCows.forms import GuessForm
 from django.urls import reverse
 
 def get_Guess(request):
-     if request.method == "POST":
+     if request.method == 'POST':
         form = GuessForm(request.POST)
-        print(request.POST)
+        
         if form.is_valid():
             # Do something with the form data like send an email.
-            return HttpResponseRedirect('/thanks/')
+            return HttpResponseRedirect('bullsAndCows/guessReceived/')
      else:
         form = GuessForm()
 
