@@ -94,7 +94,8 @@ def log_message(request):
 
 
 
-    
+def computerGuess(request):
+    return render(request, "bullsAndCows/computerGuess.html")    
 
  
 

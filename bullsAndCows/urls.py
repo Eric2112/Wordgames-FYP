@@ -18,7 +18,8 @@ urlpatterns = [
     path("guess/<newform>", views.guess),
     path("log/", views.log_message, name="log"),
     path("guessReceived/", views.guessReceived, name="guessReceived"),
-    path("guessReceived/guess", views.guess, )
+    path("guessReceived/guess", views.guess, name ="guessReceived"),
+    path("computerGuess", views.computerGuess, name ="computerGuess"),
    # path("guessReceived/<newform>", views.guessReceived),
 ]
 
