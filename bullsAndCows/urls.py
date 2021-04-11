@@ -20,6 +20,7 @@ urlpatterns = [
     path("guessReceived/", views.guessReceived, name="guessReceived"),
     path("guessReceived/guess", views.guess, name ="guessReceived"),
     path("computerGuess", views.computerGuess, name ="computerGuess"),
+    path("rules", views.rules, name ="rules"),
    # path("guessReceived/<newform>", views.guessReceived),
 ]
 

@@ -17,6 +17,9 @@ from django.http import HttpResponseRedirect
 from bullsAndCows.forms import GuessForm
 from django.urls import reverse
 
+def getRules(request):
+    return render(request, 'bullsAndCows/rules.html')
+
 def get_Guess(request):
      if request.method == 'POST':
         form = GuessForm(request.POST)
