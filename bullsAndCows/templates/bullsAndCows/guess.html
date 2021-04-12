@@ -1,16 +1,16 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} guess {% endblock %} {% block content %}
 
-<!--<form action="/guess/" method="POST">
+<form action="/guess/" method="POST">
     {% csrf_token %}
     <label for="guess">Enter a guess:</label><br>
     <input type="text" id="guess" name="guess"><br>
     <button type="submit" class="save btn btn-default">Guess</button>
-</form> -->
+</form>
 
-<form action="/guess/" method="post">
+<!--<form action="guess/" method="post">
     {% csrf_token %} {{ form }}
     <input type="submit" value="Submit">
-</form>
+</form>-->
 
 <p> this is the result of {{ form }} </p>
 
