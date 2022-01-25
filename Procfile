@@ -1,1 +1,1 @@
-web: gunicorn word_games.wsgipi
+web: gunicorn locallibrary.wsgi --wordgames -
