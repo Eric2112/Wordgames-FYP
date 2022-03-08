@@ -17,6 +17,77 @@ from django.http import HttpResponseRedirect
 from bullsAndCows.forms import GuessForm
 from django.urls import reverse
 
+import random
+import os
+
+words = [
+    "hand",
+    "sack",
+    "zoro",
+    "nami",
+    "vivi",
+    "eren",
+    "jean",
+    "push",
+    "choc",
+]
+
+msg = ''
+
+def rword():
+    global jword
+    global word
+    word = random.choice(words)
+    jum = random.sample(word, len(word))
+    jword = "".join(jum)
+
+
+def checkans(request):
+    global word 
+    global msg 
+    global jword
+    guessCount = 0
+    user_answer = request.GET['answer']
+    if user_answer == word:
+        msg = "that was the correct word"
+        guess(request)
+    else:
+        msg = "you should try again"
+        guessCount += 1
+    return render(request, "bullsAndCows/guess.html", {'jum_word': jword, 'msg': msg})
+
+
+
+def formWord(request):
+    with open(os.path.expanduser('gutenbergDictionary.txt'), 'r') as infile:
+        words = [word for word in infile.read().split() if len(word) == 4]
+
+    letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    size = 4
+    chosen = (random.choice(words))
+
+    return chosen
+
+    #guesses = 0
+    #while True:
+     #   guesses += 1
+      #  while True:
+            # get a good guess
+       #     guess = input('\n Guess the correct word[%i]: '% guesses).strip()
+        #    if len(guess) == size and \
+         #   all(char in letters for char in guess) \
+          #  and len(set(guess)) == size:
+           # break
+
+       # if guess == chosen:
+        #    break
+        #bulls = cows = 0
+        #for i in range(size):
+         #   if guess[i] == chosen[i]:
+          #      bulls += 1
+           # elif guess[i] in chosen:
+            #    cows += 1
+
 def rules(request):
     return render(request, "bullsAndCows/rules.html")
 
@@ -26,11 +97,11 @@ def get_Guess(request):
         
         if form.is_valid():
             # Do something with the form data like send an email.
-            return HttpResponseRedirect('bullsAndCows/guessReceived/')
+            return HttpResponseRedirect('/thanks/')
      else:
         form = GuessForm()
 
-     return render(request, 'bullsAndCows/guess.html', {'form': form})
+     return render(request, "bullsAndCows/guess.html", {'form': form})
 
 
 #def get_guess(request):
@@ -80,7 +151,10 @@ def input(request):
     return render(request, "bullsAndCows/input.html")
 
 def guess(request):
-    return render(request, "bullsAndCows/guess.html")
+    rword()
+    global jword
+    global msg
+    return render(request, "bullsAndCows/guess.html", {'jum_word' : jword, 'msg': msg})
 
 
 def log_message(request):

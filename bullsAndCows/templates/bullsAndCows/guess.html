@@ -1,29 +1,51 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} guess {% endblock %} {% block content %}
 
-<form action="/guess/" method="POST">
-    {% csrf_token %}
-    <label for="guess">Enter a guess:</label><br>
+<form action="/your-guess/" method="POST">
+    {% csrf_token %} {{form}}
+    <input type="submit" value="Submit">
+    <!---- <label for="guess">Enter a guess:</label><br>
     <input type="text" id="guess" name="guess"><br>
-    <button type="submit" class="save btn btn-default">Guess</button>
+    <button type="submit" class="save btn btn-default">Guess</button> -->
 </form>
 
+<p>{{ chosen }} </p>
 <p> Bulls count : 0 </p>
 <p> Cows count : 1 </p>
-<p> Number of guesses: 4</p>
-
-<button type="submit" class="save btn btn-default">Exit game</button>
-
-<button type="submit" class="save btn btn-default">Reveal correct word</button>
+<p> Number of guesses: {{ guessCount }} </p>
+<p> {{ jum_word }}</p>
 
 
-<!--<form action="guess/" method="post">
+<form action="{% url 'check' %}" method="get">
+    <input type="text" name="answer" [placeholder]="Your Guess">
+    <button type="submit">Check</button>
+</form>
+
+
+
+
+
+
+<p> {{ msg }}</p>
+
+<!--<p> User guess: {{ form }}</p> -->
+
+
+<!-- <button type="submit " class="save btn btn-default ">Exit game</button> -->
+
+
+<!-- <button onclick="button ">Reveal correct word</button> -->
+
+
+
+
+<!--<form action="guess/ " method="post ">
     {% csrf_token %} {{ form }}
-    <input type="submit" value="Submit">
+    <input type="submit " value="Submit ">
 </form>-->
 {% endblock %}
 
-<!--<form method="POST" class="guess-form">
-    <label for="guess">Enter a guess:</label><br>
-    <input type="text" id="guess" name="guess"><br>
-    <button type="submit" class="save btn btn-default">Guess</button>
+<!--<form method="POST " class="guess-form ">
+    <label for="guess ">Enter a guess:</label><br>
+    <input type="text " id="guess " name="guess "><br>
+    <button type="submit " class="save btn btn-default ">Guess</button>
 </form> -->

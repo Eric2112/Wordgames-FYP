@@ -8,7 +8,7 @@ class LogMessageForm(forms.ModelForm):
 
 
 class GuessForm(forms.Form):
-    guess = forms.CharField(max_length=4)
+    your_guess = forms.CharField(label = 'Your guess', max_length =4)
 
     #def clean(self):
     #cleaned_data = super(GuessForm, self).clean()
