@@ -30,6 +30,11 @@ words = [
     "jean",
     "push",
     "choc",
+    "face",
+    "base",
+    "mini",
+    "fast",
+    "tiny",
 ]
 
 #global variables for views
