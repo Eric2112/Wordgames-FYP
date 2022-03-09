@@ -97,7 +97,7 @@ def checkans(request):
     else:
         msg = "you should try again"
         i += 1
-    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg, 'counter': i })
+    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg, 'i': i })
 
 #def guessCount(request)
    # i += 1
@@ -186,7 +186,7 @@ def computerAnswer(request):
     else:
         msg = "you should try again"
         i += 1
-    return render(request, "bullsAndCows/computerGuess.html", {'word': word, 'msg': msg, 'counter': i })  
+    return render(request, "bullsAndCows/computerGuess.html", {'word': word, 'msg': msg, 'i': i })  
 
  
 
