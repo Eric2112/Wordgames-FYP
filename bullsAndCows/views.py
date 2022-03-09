@@ -97,6 +97,9 @@ def formWord(request):
 def rules(request):
     return render(request, "bullsAndCows/rules.html")
 
+def startpage(request):
+    return render(request, "bullsAndCows/startpage.html")
+
 def get_Guess(request):
      if request.method == 'POST':
         form = GuessForm(request.POST)

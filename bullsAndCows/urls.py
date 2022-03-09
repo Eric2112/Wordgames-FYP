@@ -13,6 +13,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     #path("", home_list_view, name="home"),
     path("", views.guess, name ="home"),
+    path("startpage/", views.startpage, name = "startpage"),
     path("input/", views.input, name="input"),
     path("your-guess/", views.guess, name="guess"),
     path("guess/<newform>", views.guess),
