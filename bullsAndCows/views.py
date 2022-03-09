@@ -1,3 +1,4 @@
+from unittest import removeHandler
 from django.shortcuts import render
 from django.shortcuts import redirect
 
@@ -19,6 +20,19 @@ from django.urls import reverse
 
 import random
 import os
+
+class HomePage(TemplateView):
+    template_name = 'bullsAndCows/startpage.html'
+
+#not in use?
+def guessReceived(request):
+    return render(request, "bullsAndCows/guessReceived.html")
+
+#not in use
+def input(request):
+    return render(request, "bullsAndCows/input.html")
+
+
 
 words = [
     "hand",
@@ -79,16 +93,19 @@ def checkans(request):
         msg = "that was the correct word"
         guess(request)
         i = 0
+        msg =" "
     else:
         msg = "you should try again"
         i += 1
     return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg, 'counter': i })
 
-#def guessCount
+#def guessCount(request)
+   # i += 1
+   # return render(request, "bullsAndCows/guess.html")
 
 
 
-def formWord(request):
+def formWord():
     with open(os.path.expanduser('gutenbergDictionary.txt'), 'r') as infile:
         words = [word for word in infile.read().split() if len(word) == 4]
 
@@ -124,6 +141,7 @@ def rules(request):
 def startpage(request):
     return render(request, "bullsAndCows/startpage.html")
 
+#possibly not in use
 def get_Guess(request):
      if request.method == 'POST':
         form = GuessForm(request.POST)
@@ -137,17 +155,7 @@ def get_Guess(request):
      return render(request, "bullsAndCows/guess.html", {'form': form})
 
 
-class HomePage(TemplateView):
-    template_name = 'bullsAndCows/startpage.html'
 
-
-
-def guessReceived(request):
-    return render(request, "bullsAndCows/guessReceived.html")
-
-
-def input(request):
-    return render(request, "bullsAndCows/input.html")
 
 def guess(request):
     rword()
@@ -157,7 +165,28 @@ def guess(request):
 
 
 def computerGuess(request):
-    return render(request, "bullsAndCows/computerGuess.html")    
+    rword()
+    #global jword
+    global msg
+    return render(request, "bullsAndCows/computerGuess.html", {'word' : word, 'msg' : msg})  
+
+
+def computerAnswer(request):
+    global word 
+    global msg 
+    #global jword
+    global i
+
+    user_answer = request.GET['answer']
+    if user_answer == word:
+        msg = "that was the correct word"
+        guess(request)
+        i = 0
+        msg = 0
+    else:
+        msg = "you should try again"
+        i += 1
+    return render(request, "bullsAndCows/computerGuess.html", {'word': word, 'msg': msg, 'counter': i })  
 
  
 

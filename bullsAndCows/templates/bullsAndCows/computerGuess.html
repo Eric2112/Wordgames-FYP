@@ -1,4 +1,20 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Computer guess {% endblock %} {% block content %}
 
+<p> Bulls count : </p>
+<p> Cows count : </p>
+<p> Number of guesses: {{ i }} </p>
+<p> {{ jum_word }}</p>
+
+<p> {{ word }} </p>
+
+<p> {{ msg }}</p>
+
+<form action="{% url 'check' %}" method="get">
+    <input type="text" name="answer" [placeholder]="Your Guess">
+    <button type="submit">Check</button>
+</form>
+
+
+
 <button onclick="location.href = '/startpage'">Exit game</button>
 <p> computer version of game</p> {% endblock %}
