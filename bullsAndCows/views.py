@@ -156,20 +156,6 @@ def guess(request):
     return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
 
 
-def log_message(request):
-    form = LogMessageForm(request.POST or None)
-
-    if request.method == "POST":
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.log_date = datetime.now()
-            message.save()
-            return redirect("home")
-    else:
-        return render(request, "bullsAndCows/log_message.html", {"form": form})  
-
-
-
 def computerGuess(request):
     return render(request, "bullsAndCows/computerGuess.html")    
 
