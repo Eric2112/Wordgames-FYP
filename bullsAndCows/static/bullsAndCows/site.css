@@ -43,3 +43,7 @@ td {
     text-align: center;
     padding-right: 15px;
 }
+
+p {
+    display: inline-block;
+}
