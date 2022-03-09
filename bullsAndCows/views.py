@@ -32,7 +32,9 @@ words = [
     "choc",
 ]
 
+#global variables for views
 msg = ''
+i =0
 
 def rword():
     global jword
@@ -46,15 +48,19 @@ def checkans(request):
     global word 
     global msg 
     global jword
-    guessCount = 0
+    global i
+
     user_answer = request.GET['answer']
     if user_answer == word:
         msg = "that was the correct word"
         guess(request)
+        i = 0
     else:
         msg = "you should try again"
-        guessCount += 1
-    return render(request, "bullsAndCows/guess.html", {'jum_word': jword, 'msg': msg})
+        i += 1
+    return render(request, "bullsAndCows/guess.html", {'jum_word': jword, 'msg': msg, 'counter': i })
+
+#def guessCount
 
 
 
