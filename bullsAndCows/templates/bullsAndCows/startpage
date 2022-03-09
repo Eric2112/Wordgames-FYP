@@ -1,7 +1,0 @@
-{% extends "bullsAndCows/layout.html" %} {% block title %} startpage {% endblock %} {% block content %}
-
-<p> Welcome to my final year project</p>
-
-<p> Please select a game below or click the rules button if you are unsure how to play</p>
-
-{% endblock %}

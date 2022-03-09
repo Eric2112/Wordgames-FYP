@@ -143,7 +143,7 @@ def get_Guess(request):
       #  return context
 
 class HomePage(TemplateView):
-    template_name = 'bullsAndCows/guess.html'
+    template_name = 'bullsAndCows/startpage.html'
 
 
 #def guessReceived(request):
