@@ -35,6 +35,9 @@ words = [
     "mini",
     "fast",
     "tiny",
+    "nope",
+    "fork",
+    "help",
 ]
 
 #global variables for views
@@ -45,14 +48,14 @@ def rword():
     global jword
     global word
     word = random.choice(words)
-    jum = random.sample(word, len(word))
-    jword = "".join(jum)
+    #jum = random.sample(word, len(word))
+    #jword = "".join(jum)
 
 
 def checkans(request):
     global word 
     global msg 
-    global jword
+    #global jword
     global i
 
     user_answer = request.GET['answer']
@@ -63,7 +66,7 @@ def checkans(request):
     else:
         msg = "you should try again"
         i += 1
-    return render(request, "bullsAndCows/guess.html", {'jum_word': jword, 'msg': msg, 'counter': i })
+    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg, 'counter': i })
 
 #def guessCount
 
@@ -118,44 +121,10 @@ def get_Guess(request):
      return render(request, "bullsAndCows/guess.html", {'form': form})
 
 
-#def get_guess(request):
- #   newform = GuessForm
-  #  if request.method == 'POST':
-
-   #     newform = GuessForm(request.POST)
-        # check whether it's valid:
-    #    if newform.is_valid():
-            # process the data in form.cleaned_data as required
-            
-     #      print(newform.cleaned_data)
-      #     Guess.objects.create(**newform.cleaned_data)
-       # else: 
-        #    print(newform.errors)
-    #context ={
-     #   "form" : newform
-    #} 
-  #  return render(request, 'bullsAndCows/guess.html', context)
-   
-
-
-#class HomeListView(ListView):
-    #"""Renders the home page, with a list of all messages."""
-    #model = LogMessage
-
-
-    #def get_context_data(self, **kwargs):
-     #   context = super(HomeListView, self).get_context_data(**kwargs)
-      #  return context
-
 class HomePage(TemplateView):
     template_name = 'bullsAndCows/startpage.html'
 
 
-#def guessReceived(request):
-    #is_private = request.POST.get('is_private', False)
- #   guessReceived = request.POST['newform']
-  #  return render(request, 'guessReceived.html',{'newform':guessReceived})
-    #return HttpResponse('{}'.format(guess))
 
 def guessReceived(request):
     return render(request, "bullsAndCows/guessReceived.html")
@@ -166,9 +135,9 @@ def input(request):
 
 def guess(request):
     rword()
-    global jword
+    #global jword
     global msg
-    return render(request, "bullsAndCows/guess.html", {'jum_word' : jword, 'msg': msg})
+    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
 
 
 def log_message(request):
