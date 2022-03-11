@@ -20,6 +20,7 @@ from django.urls import reverse
 
 import random
 import os
+import string
 
 class HomePage(TemplateView):
     template_name = 'bullsAndCows/startpage.html'
@@ -74,9 +75,9 @@ words = [
     "crow",
 ]
 
-#global variables for views
+#global variables for bulls and cows
 msg = ''
-#i =0
+i =0
 count = 0
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -149,12 +150,93 @@ def bullsCows(request):
 
 
 
+#bulls and cows ai game views and code
+
+    # this function picks letters and only moves 
+    # on if a letter is not one in the guessed list
+def new_letter(generateletter, alphabet):
+    guessed_letter = 0
+    guessed = []
+
+    while generateletter:
+            # Using random.choice to pick values
+        guessed_letter = random.choice(alphabet)
+
+        if guessed_letter not in guessed:
+                for g in guessed:
+                    if guessed_letter == g:
+                            continue
+                generateletter = False
+        guessed.append(guessed_letter)
+
+            # To prevent picking the same values again, remove them
+        alphabet.remove(guessed_letter)
+            #print('I guess '+str(guessed_letter))
+        generateletter = False
+
+        return guessed_letter
+
 
 def bullsAndCowsAI(request):
+    import string
+    alphabet = []
+    guessCount = 0
 
-    return render(request, "bullsAndCows/computerGuess.html")
+    playagain = True
+    guessagain = True
+
+    while playagain:
+
+        user_word = request.GET['answer']
+
+        
+        actual_word = []
+        computers_word = []
+
+        for letter in user_word:
+            actual_word.append(letter)
+            computers_word.append('*')
+
+        while guessagain:
+            if computers_word != actual_word:
+                alphabet = list(string.ascii_lowercase)
+                alphabet.extend(list(string.ascii_uppercase))
+                generateletter = True
 
 
+                guessed_letter = new_letter(generateletter, alphabet)
+                
+                guessCount = guessCount+1
+
+                # Used enumerate here to get position too
+                # Additionally, used actual_word
+                for i,letter in enumerate(actual_word):
+                    if guessed_letter == letter:
+                        # Insert at exactly the required position
+                        computers_word[i] = guessed_letter
+
+                    else:
+                        continue
+
+            elif computers_word == actual_word:
+                #display_status
+                string = ''.join([str(item) for item in actual_word])
+               
+                user_choice = request.POST.get('choice', False)
+                if user_choice == 'Yes' or user_choice == 'yes':
+                    guessagain = False
+                    playagain = True
+
+                else:
+                    guessagain = False
+                    playagain = False
+
+    return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actual_word':actual_word, 'user_word': user_word})
+
+
+
+
+# basic views for loading webpages
 def mixed(request):
     return render(request, "bullsAndCows/mixed.html")
 

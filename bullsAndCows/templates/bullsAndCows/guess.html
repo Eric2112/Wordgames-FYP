@@ -1,5 +1,16 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} User guess {% endblock %} {% block content %}
 
+<p> Please enter a 4 letter English word as your guess below</p>
+
+<form action="{% url 'bullsCows' %}" method="get">
+    <input type="text" name="answer" [placeholder]="Your Guess">
+    <button type="submit">Check</button>
+</form>
+
+<button onclick="location.href = '/guess'"> Play New Game</button>
+
+<button onclick="location.href = '/startpage'"> Exit game</button>
+
 <p> Bulls count : </p>
 
 <p> {{bulls}} </p>
@@ -18,16 +29,8 @@
 
 <p> {{ msg }}</p>
 
-<form action="{% url 'bullsCows' %}" method="get">
-    <input type="text" name="answer" [placeholder]="Your Guess">
-    <button type="submit">Check</button>
-</form>
-
-<button onclick="location.href = '/guess'"> Play New Game</button>
-
-<button onclick="location.href = '/startpage'"> Exit game</button>
 
 
+<p> Notes: counter for number of guesses still not working properly, error handling for non 4 letter words and non roman alphabet characters needs to be added </p>
 
-<!--<button onclick="location.href = '/startpage'"> Exit game</button> -->
 {% endblock %}

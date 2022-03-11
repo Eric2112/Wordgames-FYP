@@ -1,24 +1,49 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Computer guess {% endblock %} {% block content %}
 
-<p> PLease enter a word and I will guess what it is</p>
+<p> Please enter an English word of your choice and I will guess what it is</p>
 
-<p> Bulls count : </p>
-<p> Cows count : </p>
-<p id="numberGuesses"> Number of guesses: </p>
-<p id="figure"> {{i}} </p>
-
-<p> {{ jum_word }}</p>
-
-<p> {{ word }} </p>
-
-<p> {{ msg }}</p>
-
-<form action="{% url 'check' %}" method="get">
+<form action="{% url 'bullsAndCowsAI' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button type="submit">Check</button>
 </form>
 
-
+<button onclick="location.href = '/computerGuess'"> Play New Game</button>
 
 <button onclick="location.href = '/startpage'">Exit game</button>
-<p> computer version of game</p> {% endblock %}
+
+<p> Bulls count : </p>
+
+
+<p> Cows count : </p>
+
+
+
+<p id="gallery-paragraph-1"> Number of guesses: </p>
+<p id="gallery-paragraph-2"> {{i}} </p>
+
+
+<p> {{ guessCount }}</p>
+
+
+
+<p> {{ user_word }} </p>
+
+
+<p> {{ actual_word }}</p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+
+
+<!--<form action="{% url 'bullsAndCowsAI' %}" method="get">
+    <input type="text" name="choice" [placeholder]="choice">
+    <button type="submit">Check</button>
+</form>-->
+
+
+<p> Notes: currently returns user input, but does not display bulls and cows information, error handling for non-roman alphabet input needs to be added</p> {% endblock %}
