@@ -32,8 +32,6 @@ def guessReceived(request):
 def input(request):
     return render(request, "bullsAndCows/input.html")
 
-
-
 words = [
     "hand",
     "sack",
@@ -68,16 +66,29 @@ words = [
     "soap",
     "trip",
     "slip",
+    "pile",
+    "pale",
+    "spar",
+    "soda",
+    "cows",
+    "crow",
 ]
 
 #global variables for views
 msg = ''
-i =0
+#i =0
+count = 0
+
+letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+size = 4
 
 def rword():
     global jword
     global word
+    #global size
     word = random.choice(words)
+    #size = len(word)
+
     #jum = random.sample(word, len(word))
     #jword = "".join(jum)
 
@@ -85,7 +96,7 @@ def rword():
 def checkans(request):
     global word 
     global msg 
-    #global jword
+    global jword
     global i
 
     user_answer = request.GET['answer']
@@ -97,43 +108,56 @@ def checkans(request):
     else:
         msg = "you should try again"
         i += 1
-    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg, 'i': i })
-
-#def guessCount(request)
-   # i += 1
-   # return render(request, "bullsAndCows/guess.html")
+    return render(request, "bullsAndCows/mixed.html", {'word': word, 'msg': msg, 'i': i })
 
 
 
-def formWord():
-    with open(os.path.expanduser('gutenbergDictionary.txt'), 'r') as infile:
-        words = [word for word in infile.read().split() if len(word) == 4]
-
-    letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+def bullsCows(request):
+    global word
+    global msg
+    count = 0
+    bulls = 0
+    cows = 0
     size = 4
-    chosen = (random.choice(words))
+    letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    
+    # get a good guess
+    msg =""
+    guess = request.GET['answer'].strip()
+    msg =""
+    #count += 1
+    if len(guess) == size and \
+        all(char in letters for char in guess) \
+        and len(set(guess)) == size:
 
-    return chosen
+        if guess == word:
+                count += 1
+                bulls = size
+                cows = 0
+                msg = "You guessed the correct word"    
+        else:
+            msg = ""
+            msg = "You have not guessed the correct word"
+            count += 1
+            for i in range(size):
+                if guess[i] == word[i]:
+                    bulls += 1
+                elif guess[i] in word:
+                        cows += 1   
+        return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg })
+    
 
-    #guesses = 0
-    #while True:
-     #   guesses += 1
-      #  while True:
-            # get a good guess
-       #     guess = input('\n Guess the correct word[%i]: '% guesses).strip()
-        #    if len(guess) == size and \
-         #   all(char in letters for char in guess) \
-          #  and len(set(guess)) == size:
-           # break
 
-       # if guess == chosen:
-        #    break
-        #bulls = cows = 0
-        #for i in range(size):
-         #   if guess[i] == chosen[i]:
-          #      bulls += 1
-           # elif guess[i] in chosen:
-            #    cows += 1
+
+
+def bullsAndCowsAI(request):
+
+    return render(request, "bullsAndCows/computerGuess.html")
+
+
+def mixed(request):
+    return render(request, "bullsAndCows/mixed.html")
+
 
 def rules(request):
     return render(request, "bullsAndCows/rules.html")

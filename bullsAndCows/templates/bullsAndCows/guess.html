@@ -1,9 +1,16 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} User guess {% endblock %} {% block content %}
 
 <p> Bulls count : </p>
+
+<p> {{bulls}} </p>
+
 <p> Cows count : </p>
-<p id="numberGuesses"> Number of guesses: </p>
-<p id="figure"> {{i}} </p>
+
+<p> {{cows }} </p>
+
+<p> Number of guesses: </p>
+
+<p> {{ count }} </p>
 
 <p> {{ jum_word }}</p>
 
@@ -11,9 +18,16 @@
 
 <p> {{ msg }}</p>
 
-<form action="{% url 'check' %}" method="get">
+<form action="{% url 'bullsCows' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button type="submit">Check</button>
 </form>
 
-<button onclick="location.href = '/startpage'"> Exit game</button> {% endblock %}
+<button onclick="location.href = '/guess'"> Play New Game</button>
+
+<button onclick="location.href = '/startpage'"> Exit game</button>
+
+
+
+<!--<button onclick="location.href = '/startpage'"> Exit game</button> -->
+{% endblock %}
