@@ -47,3 +47,24 @@ td {
 p {
     display: inline-block;
 }
+
+#paragraph-left {
+    width: 50%;
+}
+
+#gallery-paragraph-1 {
+    border-left: 4px solid #000000;
+    border-radius: 4px;
+    padding-left: 15px;
+    word-wrap: break-word;
+}
+
+#gallery-paragraph-2 {
+    border-left: 4px solid #000000;
+    border-radius: 4px;
+    padding-left: 15px;
+}
+
+#paragraph-right {
+    width: 50%
+}
