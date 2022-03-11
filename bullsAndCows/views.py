@@ -25,14 +25,7 @@ import string
 class HomePage(TemplateView):
     template_name = 'bullsAndCows/startpage.html'
 
-#not in use?
-def guessReceived(request):
-    return render(request, "bullsAndCows/guessReceived.html")
-
-#not in use
-def input(request):
-    return render(request, "bullsAndCows/input.html")
-
+#words for bulls and cows/ may add gutenberg dictionary or other api instead
 words = [
     "hand",
     "sack",
@@ -246,21 +239,6 @@ def rules(request):
 
 def startpage(request):
     return render(request, "bullsAndCows/startpage.html")
-
-#possibly not in use
-def get_Guess(request):
-     if request.method == 'POST':
-        form = GuessForm(request.POST)
-        
-        if form.is_valid():
-            # Do something with the form data like send an email.
-            return HttpResponseRedirect('/thanks/')
-     else:
-        form = GuessForm()
-
-     return render(request, "bullsAndCows/guess.html", {'form': form})
-
-
 
 
 def guess(request):
