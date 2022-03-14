@@ -1,3 +1,5 @@
+
+from logging import raiseExceptions
 from unittest import removeHandler
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -18,15 +20,25 @@ from django.http import HttpResponseRedirect
 from bullsAndCows.forms import GuessForm
 from django.urls import reverse
 
+#libraries we need for the views
 import random
 import os
 import string
+import time
 
 class HomePage(TemplateView):
     template_name = 'bullsAndCows/startpage.html'
 
 #words for bulls and cows/ may add gutenberg dictionary or other api instead
-words = [
+with open(os.path.expanduser('gutenbergDictionary.txt'), 'r') as infile:
+    words = [word for word in infile.read().split() if len(word) == 4]
+
+#letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#size = 4
+word = (random.choice(words))
+
+
+wordsMix = [
     "hand",
     "sack",
     "zero",
@@ -71,6 +83,7 @@ words = [
 #global variables for bulls and cows
 msg = ''
 i =0
+error = ''
 #count = 0
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -80,7 +93,7 @@ def rword():
     global jword
     global word
     #global size
-    word = random.choice(words)
+    wordMix = random.choice(wordsMix)
     #size = len(word)
 
     #jum = random.sample(word, len(word))
@@ -88,13 +101,13 @@ def rword():
 
 
 def checkans(request):
-    global word 
+    global wordMix 
     global msg 
     global jword
     global i
 
     user_answer = request.GET['answer']
-    if user_answer == word:
+    if user_answer == wordMix:
         msg = "that was the correct word"
         guess(request)
         i = 0
@@ -102,29 +115,30 @@ def checkans(request):
     else:
         msg = "you should try again"
         i += 1
-    return render(request, "bullsAndCows/mixed.html", {'word': word, 'msg': msg, 'i': i })
+    return render(request, "bullsAndCows/mixed.html", {'wordMix': wordMix, 'msg': msg, 'i': i })
 
 
 
 def bullsCows(request):
     global word
     global msg
+    global error
     count = 0
     bulls = 0
     cows = 0
-    size = 0
+    size = 4
     letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     
     # get a good guess
     msg =""
     guess = request.GET['answer'].strip()
-    size = len(guess)
+    #size = len(guess)
     msg =""
     #count += 1
     if len(guess) == size and \
         all(char in letters for char in guess) \
         and len(set(guess)) == size:
-
+    
         if guess == word:
                 count += 1
                 bulls = size
@@ -140,8 +154,10 @@ def bullsCows(request):
                 elif guess[i] in word:
                         cows += 1 
             count += 1  
-        return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg })
-    
+        return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg, 'error' :error })
+    else:
+        raise ValueError("This input is invalid. Please use 4 lowercase roman alphabet characters only")
+        
 
 
 
@@ -230,6 +246,9 @@ def bullsAndCowsAI(request):
 
 
 def hangman(request):
+    return render(request, "bullsAndCows/hangman.html")
+
+def hang(request):
     return render(request, "bullsAndCows/hangman.html")
 
 def chooseGame(request):
