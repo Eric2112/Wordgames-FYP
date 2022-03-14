@@ -129,6 +129,7 @@ def bullsCows(request):
                 count += 1
                 bulls = size
                 cows = 0
+                return render(request, "bullsAndCows/correct1.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg, 'word': word })
                 msg = "You guessed the correct word"    
         else:
             msg = ""
@@ -240,6 +241,13 @@ def rules(request):
 
 def startpage(request):
     return render(request, "bullsAndCows/startpage.html")
+
+# views for human based 
+def guess(request):
+    rword()
+    #global jword
+    global msg
+    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
 
 
 def guess(request):
