@@ -129,8 +129,8 @@ def bullsCows(request):
                 count += 1
                 bulls = size
                 cows = 0
-                return render(request, "bullsAndCows/correct1.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg, 'word': word })
-                msg = "You guessed the correct word"    
+                return render(request, "bullsAndCows/correct.html")
+                #msg = "You guessed the correct word"    
         else:
             msg = ""
             msg = "You have not guessed the correct word"
@@ -250,11 +250,8 @@ def guess(request):
     return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
 
 
-def guess(request):
-    rword()
-    #global jword
-    global msg
-    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
+def correct(request):
+    return render(request, "bullsAndCows/correct.html")
 
 
 def computerGuess(request):
