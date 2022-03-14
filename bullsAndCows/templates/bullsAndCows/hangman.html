@@ -1,0 +1,38 @@
+{% extends "bullsAndCows/layout.html" %} {% block title %} Hangman {% endblock %} {% block content %}
+
+<p> Please enter a 4 letter English word as your guess below</p>
+
+<form action="{% url 'bullsCows' %}" method="get">
+    <input type="text" name="answer" [placeholder]="Your Guess">
+    <button type="submit">Check</button>
+</form>
+
+<button onclick="location.href = '/hangman'"> Play New Game</button>
+
+<button onclick="location.href = '/startpage'"> Exit game</button>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> </p>
+
+<p> Number of guesses: </p>
+
+<p> </p>
+
+<p> {{ jum_word }}</p>
+
+<p> Correct answer </p>
+
+<p> {{ word }} </p>
+
+<p> {{ msg }}</p>
+
+
+
+<p> </p>
+
+{% endblock %}

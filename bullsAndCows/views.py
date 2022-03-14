@@ -229,6 +229,8 @@ def bullsAndCowsAI(request):
     return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actual_word':actual_word, 'user_word': user_word})
 
 
+def hangman(request):
+    return render(request, "bullsAndCows/hangman.html")
 
 
 # basic views for loading webpages
