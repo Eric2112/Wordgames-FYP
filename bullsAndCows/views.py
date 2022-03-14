@@ -71,10 +71,10 @@ words = [
 #global variables for bulls and cows
 msg = ''
 i =0
-count = 0
+#count = 0
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-size = 4
+#size = 4
 
 def rword():
     global jword
@@ -112,12 +112,13 @@ def bullsCows(request):
     count = 0
     bulls = 0
     cows = 0
-    size = 4
+    size = 0
     letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     
     # get a good guess
     msg =""
     guess = request.GET['answer'].strip()
+    size = len(guess)
     msg =""
     #count += 1
     if len(guess) == size and \
@@ -132,12 +133,12 @@ def bullsCows(request):
         else:
             msg = ""
             msg = "You have not guessed the correct word"
-            count += 1
             for i in range(size):
                 if guess[i] == word[i]:
                     bulls += 1
                 elif guess[i] in word:
-                        cows += 1   
+                        cows += 1 
+            count += 1  
         return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg })
     
 
