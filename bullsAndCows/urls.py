@@ -14,6 +14,7 @@ urlpatterns = [
     path("computerGuess", views.computerGuess, name ="computerGuess"),
     path("rules/", views.rules, name ="rules"),
     path("hangman/", views.hangman, name="hangman"),
+    path("chooseGame/", views.chooseGame, name="chooseGame"),
     path("check/", views.checkans, name = "check"),
     path("bullsCows/", views.bullsCows, name = "bullsCows"),
     path("bullsAndCowsAI", views.bullsAndCowsAI, name ="bullsAndCowsAI"),

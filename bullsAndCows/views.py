@@ -232,6 +232,9 @@ def bullsAndCowsAI(request):
 def hangman(request):
     return render(request, "bullsAndCows/hangman.html")
 
+def chooseGame(request):
+    return render(request, "bullsAndCows/chooseGame.html")
+
 
 # basic views for loading webpages
 def mixed(request):

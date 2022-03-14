@@ -1,0 +1,24 @@
+{% extends "bullsAndCows/layout.html" %} {% block title %} Choose a bulls and cows gamemode {% endblock %} {% block content %}
+
+<html>
+
+<body>
+
+    <p> Please select a game below or click the rules button if you are unsure how to play</p>
+
+
+    <button onclick="location.href = '/guess'"> Guess a word </button>
+
+    <button onclick="location.href = '/computerGuess'"> Have your word guessed </button>
+
+    <button onclick="location.href = '/rules'"> How to play </button>
+
+
+    <p> Notes: Will update CSS when site has necessary functionality </p>
+
+</body>
+
+</html>
+
+
+{% endblock %}
