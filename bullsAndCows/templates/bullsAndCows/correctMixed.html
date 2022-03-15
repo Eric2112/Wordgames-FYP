@@ -1,0 +1,9 @@
+{% extends "bullsAndCows/layout.html" %} {% block title %} Correct Answer {% endblock %} {% block content %}
+
+<h> Congratulations you have guessed the correct word which was: </h>
+
+<p> {{ jword }} </p>
+
+<button onclick="location.href = '/mixed'"> Play New Game</button>
+
+<button onclick="location.href = '/startpage'"> Exit game</button> {% endblock %}

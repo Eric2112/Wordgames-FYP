@@ -1,23 +1,23 @@
-{% extends "bullsAndCows/layout.html" %} {% block title %} Computer guess {% endblock %} {% block content %}
+{% extends "bullsAndCows/layout.html" %} {% block title %} Mixed Word {% endblock %} {% block content %}
 
-<p> PLease enter a 4 letter english word to guess the mixed up word</p>
+<h> Please enter a 4 letter english word to guess the mixed up word</h>
 
-<p> Bulls count : </p>
-<p> Cows count : </p>
-<p id="numberGuesses"> Number of guesses: </p>
-<p id="figure"> {{i}} </p>
+<p>Mixed word to guess from: </p>
+<p> {{ jword }} </p>
 
-
-<p> {{ word }} </p>
 
 <p> {{ msg }}</p>
+
+<p> guess count</p>
+
+<p> {{i}} </p>
 
 <form action="{% url 'check' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button type="submit">Check</button>
 </form>
 
-
+<button onclick="location.href = '/mixed'">Start new game</button>
 
 <button onclick="location.href = '/startpage'">Exit game</button>
-<p> used to help testing different algorithms, etc so I keep my current progress on two main programs</p> {% endblock %}
+<p> Notes: </p> {% endblock %}

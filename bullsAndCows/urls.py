@@ -10,6 +10,7 @@ urlpatterns = [
     path("startpage/", views.startpage, name = "startpage"),
     path("guess/", views.guess, name="guess"),
     path("correct/", views.correct, name="correct"),
+    path("correctMixed/", views.correctMixed, name="correctMixed"),
     path("mixed/", views.mixed, name="mixed"),
     path("computerGuess", views.computerGuess, name ="computerGuess"),
     path("rules/", views.rules, name ="rules"),

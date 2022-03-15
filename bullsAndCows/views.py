@@ -72,42 +72,60 @@ words = [
     "crow",
 ]
 
+
+wordsm = [
+    "pile",
+    "hand",
+    "love",
+    "sand",
+]
+
 #global variables for bulls and cows
 msg = ''
 i =0
 error = ''
-#count = 0
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-#size = 4
 
+#form random word for bulls and cows
 def rword():
-    global jword
     global word
-    #global size
     word = random.choice(words)
-    #size = len(word)
 
-    #jum = random.sample(word, len(word))
+
+#def mixWord():
+ #   global jword
+  #  global wordm
+   # wordm = random.choice(wordsm)
+    #jum = random.sample(wordm, len(wordm))
     #jword = "".join(jum)
 
 
 def checkans(request):
     global word
     global msg 
-    global jword
+    #global jword
     global i
 
-    user_answer = request.GET['answer']
-    if user_answer == word:
-        msg = "that was the correct word"
-        guess(request)
-        i = 0
-        msg =" "
-    else:
-        msg = "you should try again"
-        i += 1
-    return render(request, "bullsAndCows/mixed.html", {'word': word, 'msg': msg, 'i': i })
+    jword = ""
+    word = random.choice(words)
+    jum = random.sample(word, len(word))
+    jword = "".join(jum)
+    sizeM = len(jword)
+    
+    user_answer = request.GET['answer'].strip()
+    if len(user_answer) == sizeM and \
+        all(char in letters for char in user_answer) \
+        and len(set(user_answer)) == sizeM:
+
+        if user_answer == jword:
+                i = 0
+                msg =" "
+                return render(request, "bullsAndCows/correctMixed.html", {'jword':jword, 'word': word, 'i':i})
+        else:
+                msg = "You should try again"
+                i += 1
+    return render(request, "bullsAndCows/mixed.html", {'jword' : jword,  'msg': msg, 'i': i })
 
 
 
@@ -124,7 +142,6 @@ def bullsCows(request):
     # get a good guess
     msg =""
     guess = request.GET['answer'].strip()
-    #size = len(guess)
     msg =""
     #count += 1
     if len(guess) == size and \
@@ -135,7 +152,7 @@ def bullsCows(request):
                 count += 1
                 bulls = size
                 cows = 0
-                return render(request, "bullsAndCows/correct.html")
+                return render(request, "bullsAndCows/correct.html", {'word':word})
                 #msg = "You guessed the correct word"    
         else:
             msg = ""
@@ -341,6 +358,7 @@ def hang(request):
  
         elif hcount == 5:
             time.sleep(1)
+            #hang5 = 
             print("   _____ \n"
                   "  |     | \n"
                   "  |     |\n"
@@ -349,8 +367,9 @@ def hang(request):
                   "  |    /|\ \n"
                   "  |    / \ \n"
                   "__|__\n")
-            print("Wrong guess. You are hanged!!!\n")
-            print("The word was:",halready_guessed,hword)
+
+            #print("Wrong guess. You are hanged!!!\n")
+           # print("The word was:",halready_guessed,hword)
             #play_loop()
  
     if hword == '_' * hlength:
@@ -393,6 +412,9 @@ def guess(request):
 
 def correct(request):
     return render(request, "bullsAndCows/correct.html")
+
+def correctMixed(request):
+    return render(request, "bullsAndCows/correctMixed.html")    
 
 
 def computerGuess(request):
