@@ -26,19 +26,11 @@ import os
 import string
 import time
 
+#home page for website
 class HomePage(TemplateView):
     template_name = 'bullsAndCows/startpage.html'
 
-#words for bulls and cows/ may add gutenberg dictionary or other api instead
-with open(os.path.expanduser('gutenbergDictionary.txt'), 'r') as infile:
-    words = [word for word in infile.read().split() if len(word) == 4]
-
-#letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-#size = 4
-word = (random.choice(words))
-
-
-wordsMix = [
+words = [
     "hand",
     "sack",
     "zero",
@@ -93,7 +85,7 @@ def rword():
     global jword
     global word
     #global size
-    wordMix = random.choice(wordsMix)
+    word = random.choice(words)
     #size = len(word)
 
     #jum = random.sample(word, len(word))
@@ -101,13 +93,13 @@ def rword():
 
 
 def checkans(request):
-    global wordMix 
+    global word
     global msg 
     global jword
     global i
 
     user_answer = request.GET['answer']
-    if user_answer == wordMix:
+    if user_answer == word:
         msg = "that was the correct word"
         guess(request)
         i = 0
@@ -115,7 +107,7 @@ def checkans(request):
     else:
         msg = "you should try again"
         i += 1
-    return render(request, "bullsAndCows/mixed.html", {'wordMix': wordMix, 'msg': msg, 'i': i })
+    return render(request, "bullsAndCows/mixed.html", {'word': word, 'msg': msg, 'i': i })
 
 
 
@@ -245,17 +237,142 @@ def bullsAndCowsAI(request):
     return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actual_word':actual_word, 'user_word': user_word})
 
 
+#views relating to hangman
+
+#load hangman template
 def hangman(request):
     return render(request, "bullsAndCows/hangman.html")
 
-def hang(request):
-    return render(request, "bullsAndCows/hangman.html")
+#global variables for hangman 
+global hcount
+global hdisplay
+global hword
+global halready_guessed
+global hlength
+global hplay_game
+global hinvalid
+hwords_to_guess = ["january","border","image","film","promise","kids","lungs","doll","rhyme","damage"
+                   ,"plants", "artifact"]
+hword = random.choice(hwords_to_guess)
+hlength = len(hword)
+hcount = 0
+hdisplay = '_' * hlength
+halready_guessed = []
+hplay_game = ""
 
-def chooseGame(request):
-    return render(request, "bullsAndCows/chooseGame.html")
+
+
+
+def hang(request):
+    global hcount
+    global hdisplay
+    global hword
+    global halready_guessed
+    global hplay_game
+    global hinvalid
+    hlimit = 5
+    hguess = request.GET["answer"]
+    hguess = hguess.strip()
+    if len(hguess.strip()) == 0 or len(hguess.strip()) >= 2 or hguess <= "9":
+        hinvalid ="Invalid Input, Try a letter"
+        #hang(request)
+ 
+ 
+    elif hguess in hword:
+        halready_guessed.extend([hguess])
+        hindex = hword.find(hguess)
+        hword = hword[:hindex] + "_" + hword[hindex + 1:]
+        hdisplay = hdisplay[:hindex] + hguess + hdisplay[hindex + 1:]
+        print(hdisplay + "\n")
+ 
+    elif hguess in halready_guessed:
+        print("Try another letter.\n")
+ 
+    else:
+        hcount += 1
+ 
+        if hcount == 1:
+            time.sleep(1)
+            print("   _____ \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "__|__\n")
+            print("Wrong guess. " + str(hlimit - hcount) + " guesses remaining\n")
+ 
+        elif hcount == 2:
+            time.sleep(1)
+            print("   _____ \n"
+                  "  |     | \n"
+                  "  |     |\n"
+                  "  |      \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "__|__\n")
+            print("Wrong guess. " + str(hlimit - hcount) + " guesses remaining\n")
+ 
+        elif hcount == 3:
+           time.sleep(1)
+           print("   _____ \n"
+                 "  |     | \n"
+                 "  |     |\n"
+                 "  |     | \n"
+                 "  |      \n"
+                 "  |      \n"
+                 "  |      \n"
+                 "__|__\n")
+           print("Wrong guess. " + str(hlimit - hcount) + " guesses remaining\n")
+ 
+        elif hcount == 4:
+            time.sleep(1)
+            print("   _____ \n"
+                  "  |     | \n"
+                  "  |     |\n"
+                  "  |     | \n"
+                  "  |     O \n"
+                  "  |      \n"
+                  "  |      \n"
+                  "__|__\n")
+            print("Wrong guess. " + str(hlimit - hcount) + " last guess remaining\n")
+ 
+        elif hcount == 5:
+            time.sleep(1)
+            print("   _____ \n"
+                  "  |     | \n"
+                  "  |     |\n"
+                  "  |     | \n"
+                  "  |     O \n"
+                  "  |    /|\ \n"
+                  "  |    / \ \n"
+                  "__|__\n")
+            print("Wrong guess. You are hanged!!!\n")
+            print("The word was:",halready_guessed,hword)
+            #play_loop()
+ 
+    if hword == '_' * hlength:
+        #print("Congrats! You have guessed the word correctly!")
+        return render(request, "bullsAndCows/hangman.html", {'hlimit': hlimit, 'hcount': hcount, 'hguess' : hguess, 'hinvalid': hinvalid, 'hword':hword, 'halready_guessed':halready_guessed})
+        #play_loop()
+ 
+    elif hcount != hlimit:
+        #hang()
+
+        return render(request, "bullsAndCows/hangman.html", {'hlimit': hlimit, 'hcount': hcount, 'hguess' : hguess, 'hinvalid': hinvalid, 'hword':hword, 'halready_guessed':halready_guessed})
+
+
+
+
+
 
 
 # basic views for loading webpages
+def chooseGame(request):
+    return render(request, "bullsAndCows/chooseGame.html")
+
 def mixed(request):
     return render(request, "bullsAndCows/mixed.html")
 
