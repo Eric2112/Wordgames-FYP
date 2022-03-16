@@ -1,6 +1,6 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} User guess {% endblock %} {% block content %}
 
-<p> Please enter a 4 letter English word as your guess below</p>
+<h3> Please enter a 4 letter English word as your guess below</h3>
 
 <form action="{% url 'bullsCows' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">

@@ -1,6 +1,6 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Hangman {% endblock %} {% block content %}
 
-<p> Please enter a letter below to guess. You will have 5 chances to guess the correct word</p>
+<h3> Please enter a letter below to guess. You will have 5 chances to guess the correct word</h3>
 
 <form action="{% url 'hang' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
