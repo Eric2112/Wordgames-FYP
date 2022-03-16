@@ -201,26 +201,31 @@ def bullsAndCowsAI(request):
     import string
     alphabet = []
     guessCount = 0
+    cowsAI = 0
+    bullsAI =0
 
     playagain = True
     guessagain = True
 
     while playagain:
-
-        user_word = request.GET['answer']
+        userWord = request.GET['answer']
 
         
-        actual_word = []
+        actualWord = []
         computers_word = []
 
-        for letter in user_word:
-            actual_word.append(letter)
+        for letter in userWord:
+            cowsAI += 1
+            actualWord.append(letter)
             computers_word.append('*')
 
         while guessagain:
-            if computers_word != actual_word:
+            if computers_word != actualWord:
+                print(computers_word)
+                print(bullsAI)
+                print(cowsAI)
                 alphabet = list(string.ascii_lowercase)
-                alphabet.extend(list(string.ascii_uppercase))
+                #alphabet.extend(list(string.ascii_uppercase))
                 generateletter = True
 
 
@@ -230,17 +235,24 @@ def bullsAndCowsAI(request):
 
                 # Used enumerate here to get position too
                 # Additionally, used actual_word
-                for i,letter in enumerate(actual_word):
+                for i,letter in enumerate(actualWord):
                     if guessed_letter == letter:
                         # Insert at exactly the required position
                         computers_word[i] = guessed_letter
+                        bullsAI += 1
+                        cowsAI -= 1
 
                     else:
                         continue
 
-            elif computers_word == actual_word:
+            elif computers_word == actualWord:
+                print(computers_word)
+                print(bullsAI)
+                print(cowsAI)
+                #bullsAI = len(actualWord)
+                #cowsAI = 0
                 #display_status
-                string = ''.join([str(item) for item in actual_word])
+                #string = ''.join([str(item) for item in actualWord])
                
                 user_choice = request.POST.get('choice', False)
                 if user_choice == 'Yes' or user_choice == 'yes':
@@ -251,7 +263,7 @@ def bullsAndCowsAI(request):
                     guessagain = False
                     playagain = False
 
-    return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actual_word':actual_word, 'user_word': user_word})
+    return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actual_word':actualWord, 'user_word': userWord, 'bullsAI':bullsAI, 'cowsAI': cowsAI})
 
 
 #views relating to hangman
