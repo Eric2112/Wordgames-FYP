@@ -80,10 +80,13 @@ wordsm = [
     "sand",
 ]
 
-#global variables for bulls and cows
+#global variables for mixed word
 msg = ''
 i =0
 error = ''
+
+#global variables for bulls and cows
+count = 0
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -125,6 +128,8 @@ def checkans(request):
         else:
                 msg = "You should try again"
                 i += 1
+    else:
+        raise ValueError(" This input is invalid. Please only enter lowercaser roman alphabet characters")
     return render(request, "bullsAndCows/mixed.html", {'jword' : jword,  'msg': msg, 'i': i })
 
 
@@ -133,7 +138,7 @@ def bullsCows(request):
     global word
     global msg
     global error
-    count = 0
+    global count
     bulls = 0
     cows = 0
     size = 4
@@ -143,16 +148,17 @@ def bullsCows(request):
     msg =""
     guess = request.GET['answer'].strip()
     msg =""
-    #count += 1
+    count += 1
     if len(guess) == size and \
         all(char in letters for char in guess) \
         and len(set(guess)) == size:
     
         if guess == word:
-                count += 1
+                finalCount = count
+                count = 0
                 bulls = size
                 cows = 0
-                return render(request, "bullsAndCows/correct.html", {'word':word})
+                return render(request, "bullsAndCows/correct.html", {'word':word, 'finalCount': finalCount, 'bulls':bulls})
                 #msg = "You guessed the correct word"    
         else:
             msg = ""
@@ -162,10 +168,10 @@ def bullsCows(request):
                     bulls += 1
                 elif guess[i] in word:
                         cows += 1 
-            count += 1  
+        
         return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg, 'error' :error })
     else:
-        raise ValueError("This input is invalid. Please use 4 lowercase roman alphabet characters only")
+        raise ValueError("This input is invalid. Please use 4 unique lowercase roman alphabet characters only")
         
 
 
@@ -212,16 +218,16 @@ def bullsAndCowsAI(request):
 
         
         actualWord = []
-        computers_word = []
+        computersWord = []
 
         for letter in userWord:
             cowsAI += 1
             actualWord.append(letter)
-            computers_word.append('*')
+            computersWord.append('*')
 
         while guessagain:
-            if computers_word != actualWord:
-                print(computers_word)
+            if computersWord != actualWord:
+                print(computersWord)
                 print(bullsAI)
                 print(cowsAI)
                 alphabet = list(string.ascii_lowercase)
@@ -238,15 +244,19 @@ def bullsAndCowsAI(request):
                 for i,letter in enumerate(actualWord):
                     if guessed_letter == letter:
                         # Insert at exactly the required position
-                        computers_word[i] = guessed_letter
+                        computersWord[i] = guessed_letter
                         bullsAI += 1
+                        if bullsAI == len(actualWord):
+                            computersWord = actualWord
                         cowsAI -= 1
+                        if cowsAI == 0:
+                            cowsAI = 0
 
                     else:
                         continue
 
-            elif computers_word == actualWord:
-                print(computers_word)
+            elif computersWord == actualWord:
+                print(computersWord)
                 print(bullsAI)
                 print(cowsAI)
                 #bullsAI = len(actualWord)
@@ -263,7 +273,8 @@ def bullsAndCowsAI(request):
                     guessagain = False
                     playagain = False
 
-    return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actual_word':actualWord, 'user_word': userWord, 'bullsAI':bullsAI, 'cowsAI': cowsAI})
+    return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actualWord':actualWord, 'userWord': userWord, 'bullsAI':bullsAI, 'cowsAI': cowsAI})
+
 
 
 #views relating to hangman
@@ -303,7 +314,7 @@ def hang(request):
     hguess = request.GET["answer"]
     hguess = hguess.strip()
     if len(hguess.strip()) == 0 or len(hguess.strip()) >= 2 or hguess <= "9":
-        hinvalid ="Invalid Input, Try a letter"
+        hinvalid =""
         #hang(request)
  
  
