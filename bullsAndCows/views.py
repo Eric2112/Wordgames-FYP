@@ -379,6 +379,8 @@ def hang(request):
                   "  |    /|\ \n"
                   "  |    / \ \n"
                   "__|__\n")
+            print("sorry you have not guessed the correct letter")
+            
 
             #print("Wrong guess. You are hanged!!!\n")
            # print("The word was:",halready_guessed,hword)
