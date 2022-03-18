@@ -31,10 +31,17 @@
 
 <p> {{wrongLetter}}</p>
 
+<style>
+    img {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
 
 
 {% if hcount == 1 %} {% load static %}
-<img src="{% static 'bullsAndCows/hangman1.png' %}" alt="hangman1"> {% endif %} {% if hcount == 2 %} {% load static %}
+<img src="{% static 'bullsAndCows/hangman1.png' %}" alt="hangman1" width="228" height="228"> {% endif %} {% if hcount == 2 %} {% load static %}
 <img src="{% static 'bullsAndCows/hangman2.png' %}" alt="hangman2"> {% endif %} {% if hcount == 3 %} {% load static %}
 <img src="{% static 'bullsAndCows/hangman3.png' %}" alt="hangman3"> {% endif %} {% if hcount == 4 %} {% load static %}
 <img src="{% static 'bullsAndCows/hangman4.png' %}" alt="hangman4"> {% endif %} {% if hcount == 5 %} {% load static %}
