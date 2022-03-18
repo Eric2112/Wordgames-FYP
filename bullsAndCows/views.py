@@ -90,47 +90,53 @@ count = 0
 
 letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
-#form random word for bulls and cows
+#form random word for bulls and cows and mixed word game
 def rword():
     global word
     word = random.choice(words)
 
 
-#def mixWord():
- #   global jword
-  #  global wordm
-   # wordm = random.choice(wordsm)
-    #jum = random.sample(wordm, len(wordm))
-    #jword = "".join(jum)
+def mixWord():
+    global mixedWord
+    global wordm
+    global sizeM
+    global i
+    i = 0
+    sizeM = 0
+    wordm = random.choice(words)
+    jum = random.sample(wordm, len(wordm))
+    mixedWord = "".join(jum)
+    sizeM = len(mixedWord)
 
 
 def checkans(request):
-    global word
-    global msg 
-    #global jword
+    global wordm
+    global msgMix 
+    global mixedWord
     global i
+    global sizeM
 
-    jword = ""
-    word = random.choice(words)
-    jum = random.sample(word, len(word))
-    jword = "".join(jum)
-    sizeM = len(jword)
+    #mixedWord = ""
+    #wordm = random.choice(words)
+    #jum = random.sample(wordm, len(wordm))
+    #mixedWord = "".join(jum)
+    #sizeM = len(mixedWord)
     
-    user_answer = request.GET['answer'].strip()
-    if len(user_answer) == sizeM and \
-        all(char in letters for char in user_answer) \
-        and len(set(user_answer)) == sizeM:
+    userAnswer = request.GET['answer']
+    i +=1
+    #if len(user_answer) == sizeM and \
+        #all(char in letters for char in user_answer) \
+        #and len(set(user_answer)) == sizeM:
 
-        if user_answer == jword:
-                i = 0
-                msg =" "
-                return render(request, "bullsAndCows/correctMixed.html", {'jword':jword, 'word': word, 'i':i})
-        else:
-                msg = "You should try again"
-                i += 1
+    if userAnswer == wordm and all(char in userAnswer for char in wordm):
+                return render(request, "bullsAndCows/correctMixed.html", {'mixedWord': mixedWord, 'wordm': wordm, 'i':i, 'userAnswer':userAnswer})
     else:
-        raise ValueError(" This input is invalid. Please only enter lowercaser roman alphabet characters")
-    return render(request, "bullsAndCows/mixed.html", {'jword' : jword,  'msg': msg, 'i': i })
+                msgMix = "You have not guessed the correct word try again"
+                #i += 1
+                print(mixedWord)
+    #else:
+        #raise ValueError(" This input is invalid. Please only enter 4 lowercase roman alphabet characters")
+    return render(request, "bullsAndCows/mixed.html", {'mixedWord' : mixedWord,  'msgMix': msgMix, 'i': i, 'wordm':wordm })
 
 
 
@@ -281,6 +287,7 @@ def bullsAndCowsAI(request):
 
 #load hangman template
 def hangman(request):
+    #hang()
     return render(request, "bullsAndCows/hangman.html")
 
 #global variables for hangman 
@@ -444,7 +451,9 @@ def chooseGame(request):
     return render(request, "bullsAndCows/chooseGame.html")
 
 def mixed(request):
-    return render(request, "bullsAndCows/mixed.html")
+    mixWord()
+    #global msgMix
+    return render(request, "bullsAndCows/mixed.html", {'mixedWord' :mixedWord, 'wordm': wordm})
 
 
 def rules(request):
@@ -470,8 +479,6 @@ def correctMixed(request):
     return render(request, "bullsAndCows/correctMixed.html")    
 
 
-
-
 def computerGuess(request):
     rword()
     #global jword
@@ -479,22 +486,24 @@ def computerGuess(request):
     return render(request, "bullsAndCows/computerGuess.html", {'word' : word, 'msg' : msg})  
 
 
-def computerAnswer(request):
-    global word 
-    global msg 
-    #global jword
-    global i
+#unsure if currently in use#
 
-    user_answer = request.GET['answer']
-    if user_answer == word:
-        msg = "that was the correct word"
-        guess(request)
-        i = 0
-        msg = 0
-    else:
-        msg = "you should try again"
-        i += 1
-    return render(request, "bullsAndCows/computerGuess.html", {'word': word, 'msg': msg, 'i': i })  
+#def computerAnswer(request):
+ #   global word 
+  #  global msg 
+    #global jword
+   # global i
+
+    #user_answer = request.GET['answer']
+    #if user_answer == word:
+     #   msg = "that was the correct word"
+      #  guess(request)
+       # i = 0
+        #msg = 0
+    #else:
+     #   msg = "you should try again"
+      #  i += 1
+    #return render(request, "bullsAndCows/computerGuess.html", {'word': word, 'msg': msg, 'i': i })  
 
  
 

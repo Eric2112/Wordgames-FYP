@@ -3,16 +3,26 @@
 <h3> Please enter a 4 letter english word to guess the mixed up word</h3>
 
 <p>Mixed word to guess from: </p>
-<p> {{ jword }} </p>
+<p> {{mixedWord}} </p>
 
 
-<p> {{ msg }}</p>
 
 <p> guess count</p>
 
 <p> {{i}} </p>
 
-<form action="{% url 'check' %}" method="get">
+<p> MsgMix = </p>
+<p> {{ msgMix }}</p>
+
+<p> actual word =</p>
+
+<p> {{wordm}}</p>
+
+
+
+
+
+<form action="{% url 'checkans' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button type="submit">Check</button>
 </form>

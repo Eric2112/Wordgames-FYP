@@ -19,7 +19,7 @@ urlpatterns = [
     path("hangmanWin/", views.hangmanWin, name="hangmanWin"),
     path("hangmanLose/", views.hangmanLose, name="hangmanLose"),
     path("chooseGame/", views.chooseGame, name="chooseGame"),
-    path("check/", views.checkans, name = "check"),
+    path("checkans/", views.checkans, name = "checkans"),
     path("bullsCows/", views.bullsCows, name = "bullsCows"),
     path("bullsAndCowsAI", views.bullsAndCowsAI, name ="bullsAndCowsAI"),
 
