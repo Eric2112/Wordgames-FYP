@@ -2,6 +2,9 @@
 
 <h1> Game Over</h1>
 
+{% if hcount == 5 %} {% load static %}
+<img src="{% static 'bullsAndCows/hangman5.png' %}" alt="hangman5"> {% endif %}
+
 <h2> You have entered the wrong letter five times </h2>
 
 <h2> {{wrongLetter}} </h2>
