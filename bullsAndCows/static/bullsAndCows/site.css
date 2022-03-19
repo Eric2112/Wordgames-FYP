@@ -4,11 +4,11 @@
 }
 
 .navbar {
-    background-color: rgb(12, 97, 72);
+    background-color: rgb(24, 117, 89);
     /* grey */
     font-size: 1.6em;
     font-family: 'Times New Roman', Times, serif;
-    color: rgb(53, 54, 54);
+    color: rgb(161, 173, 173);
     padding: 8px 5px 8px 5px;
 }
 
@@ -30,9 +30,9 @@
 }
 
 .button {
-    background-color: #4c6baf;
-    border: none;
-    color: rgb(0, 0, 0);
+    background-color: #3498Db;
+    border: 0.1px solid;
+    color: white;
     padding: 10px 27px;
     text-align: center;
     text-decoration: none;

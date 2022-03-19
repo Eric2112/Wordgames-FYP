@@ -1,25 +1,31 @@
-{% extends "bullsAndCows/layout.html" %} {% block title %} how to play {% endblock %} {% block content %}
-<button class="btn bullscows" onclick="location.href = '/chooseGame'">Bulls and cows</button>
+{% extends "bullsAndCows/layout.html" %} {% block title %} How to play {% endblock %} {% block content %}
+<button class="btn bullscows" onclick="location.href = '/chooseGame'">Bulls and Cows</button>
 
 <p class="p"> Bulls and cows is a game which involves one player guessing a word </p>
 
-<p class="p"> For each guess you receive a cow if one of the letters you guessed is in the word </p>
-<p>and a bull if you have the correct letter and the correct position in the word</p>
+<p class="p"> For each guess, you receive a cow if one of the letters you guessed is in the word and a bull if you have the correct letter and the correct position in the word </p>
 
-<p class="p">you win the game by getting all of your letters to be bulls and therefore the correct word </p>
+
+<p class="p">You win the game by getting all of your letters to be bulls, and therefore the correct word </p>
 
 
 
 
 <button class="btn hangman" onclick="location.href = '/hangman'">Hangman</button>
 
-<p> you have 5 guesses to guess the letters that make up an unknown word </p>
+<p class="p"> To play hangman you need to guess the letters which make up an unknown word, where you only know the amount of letters of the unknown</p>
+
+<p class="p"> You have to guess the letters that make up the unknown word. As you guess more letters, it should become easier for you to guess the word </p>
+
+<p=c lass="p"> If you enter five wrong letters you lose the game </p>
 
 
 
 
-<button class="btn mixed" onclick="location.href = '/mixed'">Mixed Word</button>
+    <button class="btn mixed" onclick="location.href = '/mixed'">Mixed Word</button>
 
-<p> You will be shown a word which is mixed up and you must guess what word it is based on the letters you can see</p>
+    <p class="p"> You will be shown a word which is mixed up and you must guess what word it is, based on the letters that you can see</p>
 
-<button onclick="location.href = '/startpage'" class="button">Return home</button> {% endblock %}
+    <p class="p"> You win the game by guessing the exact order of letters that make up the correct word</p>
+
+    <button onclick="location.href = '/startpage'" class="button">Return home</button> {% endblock %}
