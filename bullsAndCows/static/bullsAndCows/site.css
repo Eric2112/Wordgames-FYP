@@ -56,6 +56,27 @@
     cursor: pointer;
 }
 
+.button:hover {
+    background: #2980B9;
+}
+
+.submit:hover {
+    background: #2980B9;
+}
+
+
+/*.bullscows {
+    color: black;
+}
+
+.hangman {
+    color: black;
+}
+
+.mixed {
+    color: black;
+}*/
+
 
 /* text buttons from rules.html*/
 
@@ -113,6 +134,7 @@ td {
 
 .h {
     font-family: 'Times New Roman', Times, serif;
+    margin-right: 4px;
     /*font-size: 18px;*/
 }
 
