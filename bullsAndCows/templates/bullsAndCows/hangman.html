@@ -4,12 +4,12 @@
 
 <form action="{% url 'hang' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
-    <button type="submit">Enter</button>
+    <button class="button" type="submit">Enter</button>
 </form>
 
-<button onclick="location.href = '/hangman'"> Play New Game</button>
+<button onclick="location.href = '/hangman'" class="button"> Play New Game</button>
 
-<button onclick="location.href = '/startpage'"> Exit game</button>
+<button onclick="location.href = '/startpage'" class="button"> Exit game</button>
 
 <table>
     <tr>

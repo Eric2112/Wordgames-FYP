@@ -4,12 +4,12 @@
 
 <form action="{% url 'bullsAndCowsAI' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
-    <button type="submit">Check</button>
+    <button class="button" type="submit">Check</button>
 </form>
 
-<button onclick="location.href = '/computerGuess'"> Play New Game</button>
+<button onclick="location.href = '/computerGuess'" class="button"> Play New Game</button>
 
-<button onclick="location.href = '/startpage'">Exit game</button>
+<button onclick="location.href = '/startpage'" class="button">Exit game</button>
 
 <table>
     <tr>

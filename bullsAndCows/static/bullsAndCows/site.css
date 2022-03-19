@@ -33,7 +33,7 @@
     background-color: #4c6baf;
     border: none;
     color: rgb(0, 0, 0);
-    padding: 15px 32px;
+    padding: 13px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -42,10 +42,14 @@
     cursor: pointer;
 }
 
-table,
+table {
+    border-collapse: collapse;
+}
+
 th,
 td {
     border: 1px solid;
+    padding: 0.5rem;
     text-align: left;
 }
 
@@ -67,29 +71,4 @@ input[name=message] {
 td {
     text-align: center;
     padding-right: 15px;
-}
-
-p {
-    display: inline-block;
-}
-
-#paragraph-left {
-    width: 50%;
-}
-
-#gallery-paragraph-1 {
-    border-left: 4px solid #000000;
-    border-radius: 4px;
-    padding-left: 15px;
-    word-wrap: break-word;
-}
-
-#gallery-paragraph-2 {
-    border-left: 4px solid #000000;
-    border-radius: 4px;
-    padding-left: 15px;
-}
-
-#paragraph-right {
-    width: 50%
 }

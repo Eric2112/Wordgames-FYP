@@ -23,9 +23,9 @@
 
 <form action="{% url 'checkans' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
-    <button type="submit">Check</button>
+    <button class="button" type="submit">Check</button>
 </form>
 
-<button onclick="location.href = '/mixed'">Start new game</button>
+<button onclick="location.href = '/mixed'" class="button">Start new game</button>
 
-<button onclick="location.href = '/startpage'">Exit game</button> {% endblock %}
+<button onclick="location.href = '/startpage'" class="button">Exit game</button> {% endblock %}
