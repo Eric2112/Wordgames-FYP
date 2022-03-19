@@ -9,7 +9,8 @@
     font-size: 1.7em;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(216, 219, 219);
-    padding: 7px 4px 8px 4px;
+    padding: 8px 2px 8px 2px;
+    cursor: pointer;
 }
 
 .navbar a {
@@ -31,22 +32,22 @@
 
 .button {
     background-color: #3498Db;
-    border: 0.2px solid;
-    color: black;
-    padding: 10px 27px;
+    border: 0.1px solid;
+    color: white;
+    padding: 8px 28px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 6px 4px;
     cursor: pointer;
 }
 
 .submit {
     background-color: #3498Db;
-    border: 0.2px solid;
-    color: black;
-    padding: 6px 16px;
+    border: 0.15px solid;
+    color: white;
+    padding: 6px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -96,9 +97,10 @@ table {
 
 th,
 td {
-    border: 0.6px solid;
+    border: 0.5px solid;
     padding: 0.5rem;
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 
