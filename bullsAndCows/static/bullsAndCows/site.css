@@ -33,11 +33,11 @@
     background-color: #4c6baf;
     border: none;
     color: rgb(0, 0, 0);
-    padding: 13px 30px;
+    padding: 10px 27px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
 }
@@ -63,15 +63,15 @@
 }
 
 .bullscows {
-    color: dodgerblue;
+    color: black;
 }
 
 .hangman {
-    color: dodgerblue;
+    color: black;
 }
 
 .mixed {
-    color: dodgerblue;
+    color: black;
 }
 
 

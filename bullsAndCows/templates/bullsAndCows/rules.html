@@ -1,6 +1,5 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} how to play {% endblock %} {% block content %}
-<h2> Bulls and cows </h2>
-<button class="btn bullscows">Bulls and cows</button>
+<button class="btn bullscows" onclick="location.href = '/chooseGame'">Bulls and cows</button>
 
 <p class="p"> Bulls and cows is a game which involves one player guessing a word </p>
 
@@ -10,13 +9,16 @@
 <p class="p">you win the game by getting all of your letters to be bulls and therefore the correct word </p>
 
 
-<h2> Hangman </h2>
-<button class="btn hangman">Hangman</button>
+
+
+<button class="btn hangman" onclick="location.href = '/hangman'">Hangman</button>
 
 <p> you have 5 guesses to guess the letters that make up an unknown word </p>
 
-<h2> Mixed word</h2>
-<button class="btn mixed">Mixed Word</button>
+
+
+
+<button class="btn mixed" onclick="location.href = '/mixed'">Mixed Word</button>
 
 <p> You will be shown a word which is mixed up and you must guess what word it is based on the letters you can see</p>
 
