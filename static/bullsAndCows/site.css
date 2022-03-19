@@ -42,6 +42,12 @@
     cursor: pointer;
 }
 
+table,
+th,
+td {
+    border: 1px solid;
+}
+
 .p {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;

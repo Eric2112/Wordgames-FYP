@@ -2,24 +2,23 @@
 
 <h3> Please enter a 4 letter english word to guess the mixed up word</h3>
 
-<p>Mixed word to guess from: </p>
-<p> {{mixedWord}} </p>
-
-
-
-<p> guess count</p>
-
-<p> {{i}} </p>
-
-<p> MsgMix = </p>
-<p> {{ msgMix }}</p>
-
-<p> actual word =</p>
-
-<p> {{wordm}}</p>
-
-
-
+<table>
+    <tr>
+        <th> Game information</th>
+    </tr>
+    <tr>
+        <td> Mixed word:</td>
+        <td> {{mixedWord}} </td>
+    </tr>
+    <tr>
+        <td>Number of guesses:</td>
+        <td> {{i}}</td>
+    </tr>
+    <tr>
+        <td> Correct answer:</td>
+        <td>{{wordm}}</td>
+    </tr>
+</table>
 
 
 <form action="{% url 'checkans' %}" method="get">

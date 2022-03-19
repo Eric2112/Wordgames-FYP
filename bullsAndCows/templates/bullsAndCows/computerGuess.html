@@ -11,26 +11,30 @@
 
 <button onclick="location.href = '/startpage'">Exit game</button>
 
-<p> Bulls counter: </p>
-
-<p> {{bullsAI}} </p>
-
-<p> Cows counter: </p>
-
-<p> {{cowsAI}} </p>
-
-
-
-<p> Number of guesses: </p>
-
-<p> {{ guessCount }}</p>
-
-<p> Word that user entered down below:</p>
-
-<p> {{ userWord }} </p>
-
-<p> word that computer guessed, displayed separted by commas:</p>
-
-<p> {{ actualWord }}</p>
+<table>
+    <tr>
+        <th> Game information</th>
+    </tr>
+    <tr>
+        <td>Word that user has entered</td>
+        <td> {{ userWord }}</td>
+    </tr>
+    <tr>
+        <td> Bulls count:</td>
+        <td> {{bullsAI}} </td>
+    </tr>
+    <tr>
+        <td>Cows count:</td>
+        <td> {{cowsAI}}</td>
+    </tr>
+    <tr>
+        <td> Number of guesses:</td>
+        <td>{{guessCount}}</td>
+    </tr>
+    <tr>
+        <td> word that computer guessed, displayed separted by commas:</td>
+        <td>{{actualWord}}</td>
+    </tr>
+</table>
 
 {% endblock %}

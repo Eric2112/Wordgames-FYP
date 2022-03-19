@@ -11,30 +11,38 @@
 
 <button onclick="location.href = '/startpage'"> Exit game</button>
 
-<p> Letters left in word to guess: </p>
+<table>
+    <tr>
+        <th> Game information</th>
+    </tr>
+    <tr>
+        <td> lettters left in word to guess:</td>
+        <td> {{ hword }}</td>
+    </tr>
+    <tr>
+        <td> Correct letters that have been guessed:</td>
+        <td>{{halready_guessed}}</td>
+    </tr>
+    <tr>
+        <td> Incorrect letters:</td>
+        <td>{{wrongLetter}}</td>
+    </tr>
+    <tr>
+        <td> Number of incorrect guesses:</td>
+        <td> {{hcount}} </td>
+    </tr>
+    <tr>
+        <td>Number of total guesses:</td>
+        <td> {{totalHang}}</td>
+    </tr>
+</table>
 
-<p> {{ hword }}</p>
 
-<p> Number of incorrect guesses: </p>
-
-<p> {{ hcount }}</p>
-
-<p> Number of total guesses: </p>
-
-<p> {{totalHang}}</p>
-
-<p> Correct letters that have been guessed:</p>
-
-<p> {{halready_guessed}} </p>
-
-<p> incorrect guesses</p>
-
-<p> {{wrongLetter}}</p>
 
 <style>
     img {
-        width: 100%;
-        height: 100%;
+        width: 50%;
+        height: 50%;
     }
 </style>
 

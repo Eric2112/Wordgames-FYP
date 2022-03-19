@@ -11,21 +11,25 @@
 
 <button onclick="location.href = '/startpage'" class="button"> Exit game</button>
 
-<p class="p"> Bulls count : </p>
+<table>
+    <tr>
+        <td> Bulls count:</td>
+        <td> {{bulls}} </td>
+    </tr>
+    <tr>
+        <td>Cows count:</td>
+        <td> {{cows}}</td>
+    </tr>
+    <tr>
+        <td> Number of guesses:</td>
+        <td>{{count}}</td>
+    </tr>
+    <tr>
+        <td> Correct answer:</td>
+        <td>{{word}}</td>
+    </tr>
+</table>
 
-<p> {{bulls}} </p>
-
-<p class="p"> Cows count : {{cows }}</p>
-
-<p> Number of guesses: </p>
-
-<p> {{ count }} </p>
-
-<p> {{ jum_word }}</p>
-
-<p> Correct answer </p>
-
-<p> {{ word }} </p>
 
 <p> {{ msg }}</p>
 
