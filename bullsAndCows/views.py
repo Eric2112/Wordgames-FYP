@@ -324,9 +324,6 @@ def hang(request):
         hdisplay = hdisplay[:hindex] + hguess + hdisplay[hindex + 1:]
         print(hdisplay + "\n")
  
-    #elif hguess in halready_guessed:
-     #   print("Try another letter.\n")
- 
     else:
         hcount += 1
         wrongLetter.extend(hguess)

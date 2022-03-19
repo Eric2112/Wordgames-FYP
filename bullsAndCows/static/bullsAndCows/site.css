@@ -43,11 +43,15 @@
     cursor: pointer;
 }
 
+.button:hover {
+    background: #2980B9;
+}
+
 .submit {
-    background-color: #3498Db;
-    border: 0.15px solid;
+    background-color: #3498Cb;
+    border: 0.1px solid;
     color: white;
-    padding: 6px 12px;
+    padding: 6px 8px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -56,12 +60,8 @@
     cursor: pointer;
 }
 
-.button:hover {
-    background: #2980B9;
-}
-
 .submit:hover {
-    background: #2980B9;
+    background: #2980A1;
 }
 
 
