@@ -7,11 +7,11 @@
     <button type="submit" class="button">Check</button>
 </form>
 
-<button class="button" onclick="location.href = '/guess'"> Play New Game</button>
-
-<button onclick="location.href = '/startpage'" class="button"> Exit game</button>
-
 <table>
+    <tr>
+        <th> Game information</th>
+        <th></th>
+    </tr>
     <tr>
         <td> Bulls count:</td>
         <td> {{bulls}} </td>
@@ -30,9 +30,6 @@
     </tr>
 </table>
 
+<button class="button" onclick="location.href = '/guess'"> Play New Game</button>
 
-<p> {{ msg }}</p>
-
-
-
-{% endblock %}
+<button onclick="location.href = '/startpage'" class="button"> Exit game</button> {% endblock %}

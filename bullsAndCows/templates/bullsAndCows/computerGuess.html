@@ -7,13 +7,10 @@
     <button class="button" type="submit">Check</button>
 </form>
 
-<button onclick="location.href = '/computerGuess'" class="button"> Play New Game</button>
-
-<button onclick="location.href = '/startpage'" class="button">Exit game</button>
-
 <table>
     <tr>
         <th> Game information</th>
+        <th></th>
     </tr>
     <tr>
         <td>Word that user has entered</td>
@@ -32,9 +29,11 @@
         <td>{{guessCount}}</td>
     </tr>
     <tr>
-        <td> word that computer guessed, displayed separted by commas:</td>
+        <td> Word that computer guessed, displayed separted by commas:</td>
         <td>{{actualWord}}</td>
     </tr>
 </table>
 
-{% endblock %}
+<button onclick="location.href = '/computerGuess'" class="button"> Play New Game</button>
+
+<button onclick="location.href = '/startpage'" class="button">Exit game</button> {% endblock %}

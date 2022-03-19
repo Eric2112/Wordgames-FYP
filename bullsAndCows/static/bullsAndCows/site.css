@@ -6,9 +6,9 @@
 .navbar {
     background-color: rgb(24, 117, 89);
     /* grey */
-    font-size: 1.6em;
+    font-size: 1.7em;
     font-family: 'Times New Roman', Times, serif;
-    color: rgb(161, 173, 173);
+    color: rgb(216, 219, 219);
     padding: 8px 5px 8px 5px;
 }
 
@@ -18,9 +18,9 @@
 }
 
 .navbar-brand {
-    font-size: 2.8em;
+    font-size: 2.9em;
     /*1.2 */
-    font-weight: 700;
+    font-weight: 720;
     /*600 */
 }
 
@@ -31,8 +31,8 @@
 
 .button {
     background-color: #3498Db;
-    border: 0.1px solid;
-    color: white;
+    border: 0.5px solid;
+    color: black;
     padding: 10px 27px;
     text-align: center;
     text-decoration: none;
@@ -85,7 +85,7 @@ th,
 td {
     border: 1px solid;
     padding: 0.5rem;
-    text-align: left;
+    text-align: center;
 }
 
 

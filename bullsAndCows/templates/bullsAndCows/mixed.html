@@ -2,9 +2,15 @@
 
 <h3> Please enter a 4 letter english word to guess the mixed up word</h3>
 
+<form action="{% url 'checkans' %}" method="get">
+    <input type="text" name="answer" [placeholder]="Your Guess">
+    <button class="button" type="submit">Check</button>
+</form>
+
 <table>
     <tr>
         <th> Game information</th>
+        <th></th>
     </tr>
     <tr>
         <td> Mixed word:</td>
@@ -19,12 +25,6 @@
         <td>{{wordm}}</td>
     </tr>
 </table>
-
-
-<form action="{% url 'checkans' %}" method="get">
-    <input type="text" name="answer" [placeholder]="Your Guess">
-    <button class="button" type="submit">Check</button>
-</form>
 
 <button onclick="location.href = '/mixed'" class="button">Start new game</button>
 
