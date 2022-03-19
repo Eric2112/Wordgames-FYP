@@ -150,7 +150,8 @@ def bullsCows(request):
                 count = 0
                 bulls = size
                 cows = 0
-                return render(request, "bullsAndCows/correct.html", {'word':word, 'finalCount': finalCount, 'bulls':bulls})  
+                return render(request, "bullsAndCows/correct.html", {'word':word, 
+                'finalCount': finalCount, 'bulls':bulls})  
         else:
             msg = ""
             msg = "You have not guessed the correct word"
@@ -160,7 +161,8 @@ def bullsCows(request):
                 elif guess[i] in word:
                         cows += 1 
         
-        return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 'guess': guess, 'msg': msg, 'error' :error })
+        return render(request, "bullsAndCows/guess.html", {'count': count, 'cows': cows, 'bulls': bulls, 
+        'guess': guess, 'msg': msg, 'word' :word })
     else:
         raise ValueError("This input is invalid. Please use 4 unique lowercase roman alphabet characters only")
         
