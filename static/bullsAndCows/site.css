@@ -7,7 +7,7 @@
     background-color: rgb(12, 97, 72);
     /* grey */
     font-size: 1.6em;
-    font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Trebuchet MS', Arial, sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     color: rgb(53, 54, 54);
     padding: 8px 5px 8px 5px;
 }
@@ -33,7 +33,7 @@
     background-color: #4c6baf;
     border: none;
     color: rgb(0, 0, 0);
-    padding: 15px 32px;
+    padding: 13px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -42,10 +42,43 @@
     cursor: pointer;
 }
 
-table,
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+
+/* On mouse-over */
+
+.btn:hover {
+    background: #eee;
+}
+
+.bullscows {
+    color: dodgerblue;
+}
+
+.hangman {
+    color: dodgerblue;
+}
+
+.mixed {
+    color: dodgerblue;
+}
+
+table {
+    border-collapse: collapse;
+}
+
 th,
 td {
     border: 1px solid;
+    padding: 0.5rem;
+    text-align: left;
 }
 
 .p {
@@ -66,29 +99,4 @@ input[name=message] {
 td {
     text-align: center;
     padding-right: 15px;
-}
-
-p {
-    display: inline-block;
-}
-
-#paragraph-left {
-    width: 50%;
-}
-
-#gallery-paragraph-1 {
-    border-left: 4px solid #000000;
-    border-radius: 4px;
-    padding-left: 15px;
-    word-wrap: break-word;
-}
-
-#gallery-paragraph-2 {
-    border-left: 4px solid #000000;
-    border-radius: 4px;
-    padding-left: 15px;
-}
-
-#paragraph-right {
-    width: 50%
 }
