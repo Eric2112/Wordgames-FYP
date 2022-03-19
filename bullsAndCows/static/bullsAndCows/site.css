@@ -9,7 +9,7 @@
     font-size: 1.7em;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(216, 219, 219);
-    padding: 8px 5px 8px 5px;
+    padding: 7px 4px 8px 4px;
 }
 
 .navbar a {
@@ -31,9 +31,22 @@
 
 .button {
     background-color: #3498Db;
-    border: 0.5px solid;
+    border: 0.2px solid;
     color: black;
     padding: 10px 27px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.submit {
+    background-color: #3498Db;
+    border: 0.2px solid;
+    color: black;
+    padding: 8px 24px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -83,7 +96,7 @@ table {
 
 th,
 td {
-    border: 1px solid;
+    border: 0.6px solid;
     padding: 0.5rem;
     text-align: center;
 }
@@ -94,6 +107,11 @@ td {
 .p {
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
+}
+
+.h {
+    font-family: 'Times New Roman', Times, serif;
+    /*font-size: 18px;*/
 }
 
 .body-content {
