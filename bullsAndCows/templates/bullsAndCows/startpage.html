@@ -1,4 +1,4 @@
-{% extends "bullsAndCows/layout.html" %} {% block title %} startpage {% endblock %} {% block content %}
+{% extends "bullsAndCows/layout.html" %} {% block title %} Home {% endblock %} {% block content %}
 <html>
 
 <head>
@@ -51,9 +51,9 @@
 </head>
 
 <body>
-    <h2> Welcome to my final year project</h2>
+    <h2 class="h"> Welcome to my final year project</h2>
 
-    <p> Please select a game below or how to play to learn about each game</p>
+    <p class="p"> Please select a game below or how to play to learn about each game</p>
 
 
     <div class="dropdown">
@@ -69,7 +69,7 @@
 
     <script>
         /* When the user clicks on the button, 
-                                        toggle between hiding and showing the dropdown content */
+                                                toggle between hiding and showing the dropdown content */
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         }

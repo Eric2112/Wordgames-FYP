@@ -1,10 +1,10 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Hangman {% endblock %} {% block content %}
 
-<h3> Please enter a single letter below to guess. If you enter the wrong letter 5 times you lose</h3>
+<h3 class="h"> Please enter a single letter below to guess. If you enter the wrong letter 5 times you lose</h3>
 
 <form action="{% url 'hang' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
-    <button class="button" type="submit">Enter</button>
+    <button class="submit" type="submit">Enter</button>
 </form>
 
 

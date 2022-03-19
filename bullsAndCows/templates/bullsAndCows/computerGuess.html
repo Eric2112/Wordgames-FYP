@@ -1,10 +1,10 @@
-{% extends "bullsAndCows/layout.html" %} {% block title %} Computer guess {% endblock %} {% block content %}
+{% extends "bullsAndCows/layout.html" %} {% block title %} Bulls and Cows: Computer guess {% endblock %} {% block content %}
 
-<h3> Please enter an English word of your choice and I will guess what it is</h3>
+<h3 class="h"> Please enter an English word of your choice and I will guess what it is</h3>
 
 <form action="{% url 'bullsAndCowsAI' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
-    <button class="button" type="submit">Check</button>
+    <button class="submit" type="submit">Enter</button>
 </form>
 
 <table>

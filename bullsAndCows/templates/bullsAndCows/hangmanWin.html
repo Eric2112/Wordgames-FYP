@@ -1,14 +1,14 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Correct Answer {% endblock %} {% block content %}
 
-<h2> Congratulations you have guessed the correct word which was: </h2>
+<h2 class="h"> Congratulations you have guessed the correct word which was: </h2>
 
-<h2> {{showCorrect }}</h2>
+<h2 class="h"> {{showCorrect }}</h2>
 
 
 
-<h2> Total number of guesses </h2>
+<h2 class="h"> Total number of guesses: </h2>
 
-<h2> {{ totalHang }}</h2>
+<h2 class="h"> {{ totalHang }}</h2>
 
 <button onclick="location.href = '/hangman'" class="button"> Play New Game</button>
 

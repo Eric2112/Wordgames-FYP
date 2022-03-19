@@ -32,6 +32,9 @@ class HomePage(TemplateView):
 
 words = [
     "hand",
+    "bags",
+    "half",
+    "soft",
     "sack",
     "zero",
     "name",
