@@ -121,8 +121,8 @@ img {
     position: relative;
     margin-left: 430px;
     margin-top: -280px;
-    width: 35%;
-    height: 35%;
+    width: 45%;
+    height: 45%;
 }
 
 .lose {
@@ -130,15 +130,16 @@ img {
     position: relative;
     margin-left: 460px;
     margin-top: -250px;
-    width: 35%;
-    height: 35%;
+    width: 45%;
+    height: 45%;
 }
 
-.hang3 {
+
+/*.hang3 {
     display: block;
     position: relative;
     margin-left: 430px;
     margin-top: -280px;
     width: 32%;
     height: 32%;
-}
+}*/
