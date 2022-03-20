@@ -6,9 +6,11 @@
 
 <h2 class="h"> which were <strong>{{wrongLetter}} </strong></h2>
 
-<h2 class="h"> The correct word was </h<strong>{{showCorrect}}</strong>>
+<h2 class="h"> The correct word was </h<strong>{{showCorrect}}</strong>
+</h2>
 
-    <button onclick="location.href = '/hangman'" class="button"> Play New Game</button>
 
-    <button onclick="location.href = '/startpage'" class="button"> Exit game</button> {% if hcount == 5 %} {% load static %}
-    <img src="{% static 'bullsAndCows/hangman5.png' %}" alt="hangman5" class="lose"> {% endif %} {% endblock %}
+<button onclick="location.href = '/hangman'" class="button"> Play New Game</button>
+
+<button onclick="location.href = '/startpage'" class="button"> Exit game</button> {% if hcount == 5 %} {% load static %}
+<img src="{% static 'bullsAndCows/hangman5.png' %}" alt="hangman5" class="lose"> {% endif %} {% endblock %}
