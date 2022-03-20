@@ -370,7 +370,6 @@ def hang(request):
 
 
 def hangmanWin(request):
-
     return render(request, "bullsAndCows/hangmanWin.html")  
 
 def hangmanLose(request):
