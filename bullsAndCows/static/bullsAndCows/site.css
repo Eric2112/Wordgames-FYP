@@ -1,11 +1,5 @@
-.message {
-    font-weight: 620;
-    color: rgb(245, 7, 46);
-}
-
 .navbar {
     background-color: rgb(24, 117, 89);
-    /* grey */
     font-size: 1.7em;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(216, 219, 219);
@@ -20,9 +14,7 @@
 
 .navbar-brand {
     font-size: 2.9em;
-    /*1.2 */
     font-weight: 720;
-    /*600 */
 }
 
 .navbar-item {
@@ -63,19 +55,6 @@
 .submit:hover {
     background: #555657;
 }
-
-
-/*.bullscows {
-    color: black;
-}
-
-.hangman {
-    color: black;
-}
-
-.mixed {
-    color: black;
-}*/
 
 
 /* text buttons from rules.html*/
@@ -135,7 +114,6 @@ td {
 .h {
     font-family: 'Times New Roman', Times, serif;
     margin-right: 4px;
-    /*font-size: 18px;*/
 }
 
 img {

@@ -30,6 +30,18 @@ import time
 class HomePage(TemplateView):
     template_name = 'bullsAndCows/startpage.html'
 
+def startpage(request):
+    return render(request, "bullsAndCows/startpage.html")
+
+#how to play
+def rules(request):
+    return render(request, "bullsAndCows/rules.html") 
+
+# basic views for loading webpages
+def chooseGame(request):
+    return render(request, "bullsAndCows/chooseGame.html")      
+
+#list of words for guess and mixed.html
 words = [
     "hand",
     "bags",
@@ -74,6 +86,9 @@ words = [
     "cows",
     "crow",
     "kids",
+    "view",
+    "hang",
+
 ]
 
 
@@ -85,46 +100,20 @@ error = ''
 #global variables for bulls and cows
 count = 0
 
-letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 #form random word for bulls and cows and mixed word game
 def rword():
     global word
     word = random.choice(words)
 
+# views for human based 
+def guess(request):
+    rword()
+    global msg
+    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
 
-def mixWord():
-    global mixedWord
-    global wordm
-    global sizeM
-    global i
-    i = 0
-    sizeM = 0
-    wordm = random.choice(words)
-    jum = random.sample(wordm, len(wordm))
-    mixedWord = "".join(jum)
-    sizeM = len(mixedWord)
-
-
-def checkans(request):
-    global wordm
-    global msgMix 
-    global mixedWord
-    global i
-    global sizeM
-
-    userAnswer = request.GET['answer']
-    i +=1
-    
-    if userAnswer == wordm and all(char in userAnswer for char in wordm):
-                return render(request, "bullsAndCows/correctMixed.html", {'mixedWord': mixedWord, 'wordm': wordm, 'i':i, 'userAnswer':userAnswer})
-    else:
-                msgMix = "You have not guessed the correct word try again"
-                print(mixedWord)
-    
-    return render(request, "bullsAndCows/mixed.html", {'mixedWord' : mixedWord,  'msgMix': msgMix, 'i': i, 'wordm':wordm })
-
-
+def correct(request):
+    return render(request, "bullsAndCows/correct.html")
 
 def bullsCows(request):
     global word
@@ -170,6 +159,11 @@ def bullsCows(request):
 
 
 #bulls and cows ai game views and code
+def computerGuess(request):
+    rword()
+    global msg
+    return render(request, "bullsAndCows/computerGuess.html", {'word' : word, 'msg' : msg})
+
 
     # this function picks letters and only moves 
     # on if a letter is not one in the guessed list
@@ -193,6 +187,7 @@ def new_letter(generateletter, alphabet):
         generateletter = False
 
         return guessed_letter
+
 
 
 def bullsAndCowsAI(request):
@@ -266,7 +261,6 @@ def bullsAndCowsAI(request):
 
 
 #views relating to hangman
-
 #load hangman template
 def hangman(request):
     hangVariables()
@@ -369,6 +363,7 @@ def hang(request):
          'hword':hword, 'halready_guessed':halready_guessed, 'totalHang': totalHang, 'showCorrect':showCorrect, 'wrongLetter':wrongLetter})
 
 
+
 def hangmanWin(request):
     return render(request, "bullsAndCows/hangmanWin.html")  
 
@@ -377,42 +372,48 @@ def hangmanLose(request):
 
 
 
-
-# basic views for loading webpages
-def chooseGame(request):
-    return render(request, "bullsAndCows/chooseGame.html")
-
+#views for mixed word game
 def mixed(request):
     mixWord()
     return render(request, "bullsAndCows/mixed.html", {'mixedWord' :mixedWord, 'wordm': wordm})
 
-
-def rules(request):
-    return render(request, "bullsAndCows/rules.html")
-
-def startpage(request):
-    return render(request, "bullsAndCows/startpage.html")
-
-
-
-# views for human based 
-def guess(request):
-    rword()
-    global msg
-    return render(request, "bullsAndCows/guess.html", {'word': word, 'msg': msg})
+def mixWord():
+    global mixedWord
+    global wordm
+    global sizeM
+    global i
+    i = 0
+    sizeM = 0
+    wordm = random.choice(words)
+    jum = random.sample(wordm, len(wordm))
+    mixedWord = "".join(jum)
+    sizeM = len(mixedWord)
 
 
-def correct(request):
-    return render(request, "bullsAndCows/correct.html")
+def checkans(request):
+    global wordm
+    global msgMix 
+    global mixedWord
+    global i
+    global sizeM
+
+    userAnswer = request.GET['answer']
+    i +=1
+    
+    if userAnswer == wordm and all(char in userAnswer for char in wordm):
+                return render(request, "bullsAndCows/correctMixed.html", {'mixedWord': mixedWord, 'wordm': wordm, 'i':i, 'userAnswer':userAnswer})
+    else:
+                msgMix = "You have not guessed the correct word try again"
+                print(mixedWord)
+    
+    return render(request, "bullsAndCows/mixed.html", {'mixedWord' : mixedWord,  'msgMix': msgMix, 'i': i, 'wordm':wordm })
+
 
 def correctMixed(request):
     return render(request, "bullsAndCows/correctMixed.html")    
 
 
-def computerGuess(request):
-    rword()
-    global msg
-    return render(request, "bullsAndCows/computerGuess.html", {'word' : word, 'msg' : msg})  
+  
 
 
  
