@@ -1,12 +1,12 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Correct Answer {% endblock %} {% block content %}
 
-<h2 class="h"> Congratulations you have guessed the correct word which was {{ word }} </h2>
+<h2 class="h"> Congratulations you have guessed the correct word which was <strong>{{ word }}</strong> </h2>
 
 
-<h2 class="h"> Bulls = {{bulls}}</h2>
+<h2 class="h"> Bulls = <strong>{{bulls}}</strong></h2>
 
 
-<h2 class="h"> Total number of guesses = {{ finalCount }}</h2>
+<h2 class="h"> Total number of guesses = <strong>{{ finalCount }}</strong></h2>
 
 
 <button class="button" onclick="location.href = '/guess'"> Play New Game</button>

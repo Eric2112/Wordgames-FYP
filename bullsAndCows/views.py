@@ -41,54 +41,13 @@ def rules(request):
 def chooseGame(request):
     return render(request, "bullsAndCows/chooseGame.html")      
 
-#list of words for guess and mixed.html
+#list of words for guess, hangman mixed.html
 words = [
-    "hand",
-    "bags",
-    "half",
-    "soft",
-    "sack",
-    "zero",
-    "name",
-    "vial",
-    "vile",
-    "evil",
-    "jean",
-    "push",
-    "chat",
-    "face",
-    "base",
-    "mint",
-    "fast",
-    "tiny",
-    "nope",
-    "fork",
-    "help",
-    "stop",
-    "poke",
-    "lame",
-    "pick",
-    "bowl",
-    "lent",
-    "bent",
-    "sent",
-    "fire",
-    "land",
-    "sand",
-    "rope",
-    "soap",
-    "trip",
-    "slip",
-    "pile",
-    "pale",
-    "spar",
-    "soda",
-    "cows",
-    "crow",
-    "kids",
-    "view",
-    "hang",
-
+    "hand","bags","half","soft","sack", "zero","name","vial","vile","evil","jean",
+    "push","chat","face","base","mint","fast","tiny","nope","fork","help","stop",
+    "poke","lame","pick","bowl","lent","bent", "sent","fire","land","sand","rope",
+    "soap","trip","slip","pile","pale","spar", "soda","cows","crow","kids", "view",
+    "hang","dire","cars","pigs","site","golf","help","song","dome", "home","rule",
 ]
 
 
@@ -279,8 +238,7 @@ def hangVariables():
     global showHang
     global showCorrect
     global wrongLetter
-    #hwords_to_guess = ["january","border","image","film","promise","kids","lungs","doll","rhyme","damage"
-                   # ,"plants", "artifact"]
+    
     hword = random.choice(words)
     showCorrect = hword
     hlength = len(hword)
