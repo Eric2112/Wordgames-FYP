@@ -13,16 +13,16 @@
         <th></th>
     </tr>
     <tr>
-        <td>Word that user has entered:</td>
-        <td> {{ userWord }}</td>
+        <td>Each time the :</td>
+        <td> {{ displayWord }}</td>
     </tr>
     <tr>
         <td> Bulls count:</td>
-        <td> {{bullsAI}} </td>
+        <td> {{displayBull}} </td>
     </tr>
     <tr>
         <td>Cows count:</td>
-        <td> {{cowsAI}}</td>
+        <td> {{displayCow}}</td>
     </tr>
     <tr>
         <td> Number of guesses:</td>
@@ -33,6 +33,15 @@
         <td>{{actualWord}}</td>
     </tr>
 </table>
+
+
+
+<p class="p"> </p>
+
+
+
+
+
 
 <button onclick="location.href = '/computerGuess'" class="button"> Play New Game</button>
 

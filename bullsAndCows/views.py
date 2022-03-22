@@ -118,10 +118,14 @@ def bullsCows(request):
 
 
 #bulls and cows ai game views and code
+
+
+
+
 def computerGuess(request):
-    rword()
-    global msg
-    return render(request, "bullsAndCows/computerGuess.html", {'word' : word, 'msg' : msg})
+    global guessCount
+    guessCount = 0
+    return render(request, "bullsAndCows/computerGuess.html", {'guessCount':guessCount})
 
 
     # this function picks letters and only moves 
@@ -156,6 +160,12 @@ def bullsAndCowsAI(request):
     cowsAI = 0
     bullsAI =0
 
+    #values to display process of program to user
+    displayWord =[]
+    displayBull =[]
+    displayCow = []
+    displayGuess = []
+
     playagain = True
     guessagain = True
 
@@ -176,6 +186,13 @@ def bullsAndCowsAI(request):
                 print(computersWord)
                 print(bullsAI)
                 print(cowsAI)
+             
+                displayWord.append(computersWord)
+                displayBull.append(bullsAI)
+                displayCow.append(cowsAI)
+                displayGuess.append(guessCount)
+
+
                 alphabet = list(string.ascii_lowercase)
                 #alphabet.extend(list(string.ascii_uppercase))
                 generateletter = True
@@ -202,9 +219,10 @@ def bullsAndCowsAI(request):
                         continue
 
             elif computersWord == actualWord:
-                print(computersWord)
-                print(bullsAI)
-                print(cowsAI)
+                displayWord.append(computersWord)
+                displayBull.append(bullsAI)
+                displayCow.append(cowsAI)
+                displayGuess.append(guessCount)
                
                 user_choice = request.POST.get('choice', False)
                 if user_choice == 'Yes' or user_choice == 'yes':
@@ -215,7 +233,8 @@ def bullsAndCowsAI(request):
                     guessagain = False
                     playagain = False
 
-    return render(request, "bullsAndCows/computerGuess.html", { 'guessCount': guessCount, 'actualWord':actualWord, 'userWord': userWord, 'bullsAI':bullsAI, 'cowsAI': cowsAI})
+    return render(request, "bullsAndCows/computerGuess.html", {'displayWord':displayWord, 'displayBull': displayBull, 'displayCow' : displayCow, 'displayGuess': displayGuess,
+    'guessCount': guessCount, 'actualWord':actualWord, 'userWord': userWord, 'bullsAI':bullsAI, 'cowsAI': cowsAI})
 
 
 
