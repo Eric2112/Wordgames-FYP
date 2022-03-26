@@ -1,17 +1,16 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} User guess {% endblock %} {% block content %}
 
-<h3 class="h"> Please enter a 4 letter English word as your guess below</h3>
+<h3 class="h"> Please enter a 4 letter word as your guess below</h3>
 
 <form action="{% url 'bullsCows' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button type="submit" class="submit">Enter</button>
 </form>
 
+
+<h3> Game information</h3>
 <table>
-    <tr>
-        <th> Game information</th>
-        <th></th>
-    </tr>
+
     <tr>
         <td> Bulls count:</td>
         <td> {{bulls}} </td>

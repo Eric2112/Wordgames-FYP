@@ -4,7 +4,6 @@ from unittest import removeHandler
 from django.shortcuts import render
 from django.shortcuts import redirect
 
-from bullsAndCows.forms import LogMessageForm
 from bullsAndCows.models import LogMessage
 from django.views.generic import ListView
 from bullsAndCows import methods
@@ -17,7 +16,6 @@ from django.utils.timezone import datetime
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 
-from bullsAndCows.forms import GuessForm
 from django.urls import reverse
 
 #libraries we need for the views
@@ -117,15 +115,9 @@ def bullsCows(request):
 
 
 
-#bulls and cows ai game views and code
-
-
-
-
+#bulls and cows computer guess game views and code
 def computerGuess(request):
-    global guessCount
-    guessCount = 0
-    return render(request, "bullsAndCows/computerGuess.html", {'guessCount':guessCount})
+    return render(request, "bullsAndCows/computerGuess.html")
 
 
     # this function picks letters and only moves 
@@ -152,19 +144,21 @@ def new_letter(generateletter, alphabet):
         return guessed_letter
 
 
-
+#function to work out word of just bulls
 def bullsAndCowsAI(request):
     import string
     alphabet = []
-    guessCount = 0
     cowsAI = 0
     bullsAI =0
+    guessCount = 0
 
     #values to display process of program to user
     displayWord =[]
     displayBull =[]
     displayCow = []
     displayGuess = []
+    displayLetter = []
+    displayCount =[]
 
     playagain = True
     guessagain = True
@@ -183,10 +177,8 @@ def bullsAndCowsAI(request):
 
         while guessagain:
             if computersWord != actualWord:
-                print(computersWord)
-                print(bullsAI)
-                print(cowsAI)
-             
+               
+                #add values to list to be displayed to user
                 displayWord.append(computersWord)
                 displayBull.append(bullsAI)
                 displayCow.append(cowsAI)
@@ -194,13 +186,14 @@ def bullsAndCowsAI(request):
 
 
                 alphabet = list(string.ascii_lowercase)
-                #alphabet.extend(list(string.ascii_uppercase))
                 generateletter = True
 
 
                 guessed_letter = new_letter(generateletter, alphabet)
+                displayLetter.append(guessed_letter)
                 
                 guessCount = guessCount+1
+                displayCount.append(guessCount)
 
                 # Used enumerate here to get position too
                 # Additionally, used actual_word
@@ -223,7 +216,7 @@ def bullsAndCowsAI(request):
                 displayBull.append(bullsAI)
                 displayCow.append(cowsAI)
                 displayGuess.append(guessCount)
-               
+                
                 user_choice = request.POST.get('choice', False)
                 if user_choice == 'Yes' or user_choice == 'yes':
                     guessagain = False
@@ -234,7 +227,8 @@ def bullsAndCowsAI(request):
                     playagain = False
 
     return render(request, "bullsAndCows/computerGuess.html", {'displayWord':displayWord, 'displayBull': displayBull, 'displayCow' : displayCow, 'displayGuess': displayGuess,
-    'guessCount': guessCount, 'actualWord':actualWord, 'userWord': userWord, 'bullsAI':bullsAI, 'cowsAI': cowsAI})
+    'guessCount': guessCount, 'actualWord':actualWord, 'userWord': userWord, 'bullsAI':bullsAI, 
+    'cowsAI': cowsAI, 'displayLetter':displayLetter, 'displayCount':displayCount})
 
 
 

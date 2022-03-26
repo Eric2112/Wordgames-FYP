@@ -1,3 +1,5 @@
+/*css for navigation bar*/
+
 .navbar {
     background-color: rgb(24, 117, 89);
     font-size: 1.7em;
@@ -134,13 +136,3 @@ img {
     width: 45%;
     height: 45%;
 }
-
-
-/*.hang3 {
-    display: block;
-    position: relative;
-    margin-left: 430px;
-    margin-top: -280px;
-    width: 32%;
-    height: 32%;
-}*/

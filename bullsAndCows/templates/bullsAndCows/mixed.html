@@ -1,17 +1,15 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Mixed Word {% endblock %} {% block content %}
 
-<h3 class="h"> Please enter a 4 letter english word to guess the mixed up word</h3>
+<h3 class="h"> Please enter a word to guess the mixed up word that is displayed below</h3>
 
 <form action="{% url 'checkans' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button class="submit" type="submit">Enter</button>
 </form>
 
+<h3>Game information</h3>
 <table>
-    <tr>
-        <th> Game information</th>
-        <th></th>
-    </tr>
+
     <tr>
         <td> Mixed word:</td>
         <td> {{mixedWord}} </td>

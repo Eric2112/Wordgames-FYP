@@ -1,28 +1,22 @@
 {% extends "bullsAndCows/layout.html" %} {% block title %} Bulls and Cows: Computer guess {% endblock %} {% block content %}
 
-<h3 class="h"> Please enter an English word of your choice and I will guess what it is</h3>
+<h3 class="h"> Please enter a word of your choice and I will guess what it is</h3>
 
 <form action="{% url 'bullsAndCowsAI' %}" method="get">
     <input type="text" name="answer" [placeholder]="Your Guess">
     <button class="submit" type="submit">Enter</button>
 </form>
 
+
+<h3> Game information</h3>
 <table>
     <tr>
-        <th> Game information</th>
-        <th></th>
-    </tr>
-    <tr>
-        <td>Each time the :</td>
-        <td> {{ displayWord }}</td>
+        <td>Word that has been entered by user:</td>
+        <td> {{ userWord}}</td>
     </tr>
     <tr>
         <td> Bulls count:</td>
-        <td> {{displayBull}} </td>
-    </tr>
-    <tr>
-        <td>Cows count:</td>
-        <td> {{displayCow}}</td>
+        <td> {{bullsAI}} </td>
     </tr>
     <tr>
         <td> Number of guesses:</td>
@@ -34,12 +28,21 @@
     </tr>
 </table>
 
-
-
-<p class="p"> </p>
-
-
-
+<h3> Full output from function displayed</h3>
+<table>
+    <tr>
+        <th> Number of guesses:</th>
+        <th>Letter being guessed:</th>
+        <th> Bulls count:</th>
+        <th> Word that computer guessed, displayed separted by commas:</th>
+    </tr>
+    <tr>
+        <td>{{displayCount}}</td>
+        <td>{{displayLetter}}</td>
+        <td> {{displayBull}} </td>
+        <td>{{actualWord}}</td>
+    </tr>
+</table>
 
 
 
