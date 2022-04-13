@@ -6,7 +6,6 @@ from django.shortcuts import redirect
 
 from bullsAndCows.models import LogMessage
 from django.views.generic import ListView
-from bullsAndCows import methods
 
 from django.views.generic.base import TemplateView
 

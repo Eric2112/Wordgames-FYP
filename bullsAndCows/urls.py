@@ -1,9 +1,7 @@
 from django.urls import path
 from bullsAndCows import views
-from bullsAndCows.models import LogMessage
 
 from django.views.generic import TemplateView
-
 
 urlpatterns = [
     path("", views.startpage, name ="home"),
